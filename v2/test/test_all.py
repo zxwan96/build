@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os, sys, string
+from BoostBuild import get_toolset
 
 # clear environment for testing
 #
@@ -123,6 +124,7 @@ tests = [ "project_test1",
           "expansion",
           "wrapper",
           "duplicate",
+          "library_property",
           #"ordered_properties",
           ]
 
@@ -131,6 +133,9 @@ if os.name == 'posix':
     # On windows, library order is not important, so skip this test
     # Besides, it fails ;-)    
     tests.append("library_order")
+
+if string.find(get_toolset(), 'gcc') == 0:
+    tests.append("gcc_runtime")
 
 if os.environ.has_key('QTDIR'):
     tests.append("railsys")

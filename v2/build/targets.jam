@@ -1008,9 +1008,8 @@ class basic-target : abstract-target
                   $(usage-requirements) ] ;
                 usage-requirements = [ property-set.create $(usage-requirements) ] ;
                 
-                local libs = [ $(rproperties).get <library> ] ;
-                libs += [ $(rproperties).get <source> ] ;
-                source-targets += $(libs:G=) ;
+                local extra = [ $(rproperties).get <source> ] ;                
+                source-targets += $(extra:G=) ;
                 # We might get duplicate sources, for example if
                 # we link to two library which have the same <library> in
                 # usage requirements.

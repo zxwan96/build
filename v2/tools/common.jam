@@ -15,6 +15,8 @@ import feature ;
 import errors ;
 import path ;
 import sequence ;
+import toolset ;
+
 
 # The rule checks toolset parameters. Each trailing parameter 
 # should be a pair of parameter name and parameter value.
@@ -137,6 +139,10 @@ rule get-invocation-command (
             command = $(user-provided-command) ;
         }        
     }
+    if ! $(command)
+    {        
+        command = $(user-provided-command) ;
+    }    
     return $(command) ;
 }
 
@@ -196,28 +202,62 @@ rule find-tool ( name : additional-paths * : path-last ? )
     }    
 }
 
-# Checks that a tool can be invoked by 'command'. 
-# If command is not an absolute path, checks if it can be found in 'path'.
-# If comand is absolute path, check that it exists. Returns 'command'
-# if ok and empty string otherwise.
-rule check-tool ( xcommand + )
+# Checks if 'command' can be found either in path
+# or is a full name to an existing file.
+rule check-tool-aux ( command )
 {
-    local command = $(xcommand[1]) ;
     if $(command:D)
     {
         if [ path.exists $(command) ]
         {
-            return $(xcommand) ;
+            return $(command) ;
         }        
     }
     else
     {
         if [ GLOB [ modules.peek : PATH Path path ] : $(command) ]
         {
-            return $(xcommand) ;
+            return $(command) ;
         }        
     }        
 }
+
+
+# Checks that a tool can be invoked by 'command'. 
+# If command is not an absolute path, checks if it can be found in 'path'.
+# If comand is absolute path, check that it exists. Returns 'command'
+# if ok and empty string otherwise.
+rule check-tool ( xcommand + )
+{
+    if   [ check-tool-aux $(xcommand[1]) ] 
+      || [ check-tool-aux $(xcommand[-1]) ]
+    {
+        return $(xcommand) ;
+    }
+}
+
+# Handle common options for toolset, specifically sets the following
+# flag variables:
+# - CONFIG_COMMAND to 'command'
+# - OPTIONS for compile.c to the value of <cflags> in options
+# - OPTIONS for compile.c++ to the value of <cxxflags> in options
+# - OPTIOns for compile to the value of <compileflags> in options
+# - OPTIONs for link to the value of <linkflags> in options
+rule handle-options ( toolset : condition * : command ? : options * )
+{
+    # The last parameter ('true') says it's OK to set flags for another
+    # module,   
+    toolset.flags $(toolset) CONFIG_COMMAND $(condition) : $(command) : unchecked ;
+    toolset.flags $(toolset).compile OPTIONS $(condition) :
+      [ feature.get-values <compileflags> : $(options) ] : unchecked ;
+    toolset.flags $(toolset).compile.c OPTIONS $(condition) :
+      [ feature.get-values <cflags> : $(options) ] : unchecked ;
+    toolset.flags $(toolset).compile.c++ OPTIONS $(condition) :
+      [ feature.get-values <cxxflags> : $(options) ] : unchecked ;
+    toolset.flags $(toolset).link OPTIONS $(condition) :
+      [ feature.get-values <linkflags> : $(options) ] : unchecked ;        
+}
+
 
 # returns the location of the "program files" directory on a windows
 # platform

@@ -15,9 +15,16 @@ import feature ;
 import "class" : new ;
 import set ;
 import common ;
+import errors ;
 
 feature.extend toolset : gcc ;
-toolset.inherit gcc : unix ;
+
+import unix ;
+toolset.inherit-generators gcc : unix : unix.link unix.link.dll ;
+toolset.inherit-flags gcc : unix ;
+toolset.inherit-rules gcc : unix ;
+
+
 
 # Make the "o" suffix used for gcc toolset on all
 # platforms
@@ -25,18 +32,28 @@ type.set-generated-target-suffix OBJ : <toolset>gcc : o ;
 type.set-generated-target-suffix STATIC_LIB : <toolset>gcc : a ;
 
 
-# Initializes the gcc toolset
-# The name parameter specifies the name used to invoke the compiler, and
-# can be absolute.
-rule init ( version ? : command * : compiler-options * : linker-options * )
+# Initializes the gcc toolset for the given version.
+# If necessary, command may be used to specify where the compiler
+# is located.
+# The parameter 'options' is a space-delimited list of options, each
+# one being specified as <option-name>option-value. Valid option names
+# are: cxxflags, linkflags and linker-type. Accepted values for linker-type
+# are gnu and sun, gnu being the default.
+# Example:
+#   using gcc : 3.4 : : <cxxflags>foo <linkflags>bar <linker-type>sun ;
+rule init ( version ? : command * : options * )
 {
     local condition = [ common.check-init-parameters gcc : version $(version) ] ;
     
     local command = [ common.get-invocation-command gcc : g++ : $(command) ] ;
+
+    common.handle-options gcc : $(condition) : $(command) : $(options) ;
     
-    flags gcc CONFIG_COMMAND $(condition) : $(command) ;
-    flags gcc.compile OPTIONS $(condition) : $(compiler-options) ;
-    flags gcc.link OPTIONS $(condition) : $(linker-options) ;
+    local linker = [ feature.get-values <linker-type> : $(options) ] ;
+    if ! $(linker) {
+        linker = gnu ;
+    }
+    init-link-flags gcc $(linker) $(condition) ;
 }
 
 if [ os.name ] = NT
@@ -61,17 +78,22 @@ flags gcc.compile OPTIONS <inlining>full : -finline-functions -Wno-inline ;
 
 flags gcc.compile OPTIONS <debug-symbols>on : -g ;
 flags gcc.compile OPTIONS <profiling>on : -pg ;
-# On cygwin, gcc generates position independent code by default,
+# On cygwin and mingw, gcc generates position independent code by default,
 # and warns if -fPIC is specified. This might not be the right way
 # of checking if we're using cygwin. For example, it's possible 
 # to run cygwin gcc from NT shell, or using crosscompiling.
 # But we'll solve that problem when it's time. In that case
 # we'll just add another parameter to 'init' and move this login
 # inside 'init'.
-if [ os.name ] != CYGWIN
+if [ os.name ] != CYGWIN && [ os.name ] != NT
 {        
     flags gcc.compile OPTIONS <link>shared/<main-target-type>LIB : -fPIC ;
 }    
+if [ os.name ] != NT
+{
+    HAVE_SONAME = "" ;
+}
+
 
 
 flags gcc.compile OPTIONS <cflags> ;
@@ -146,7 +168,7 @@ class gcc-linking-generator : unix-linking-generator
         }
                         
         return [ unix-linking-generator.generated-targets 
-            $(sources) : $(property-set) : $(property-set) $(name) ] ;
+            $(sources) : $(property-set) : $(project) $(name) ] ;
     }    
 }
 
@@ -156,37 +178,81 @@ generators.register [ new gcc-linking-generator gcc.link : LIB OBJ : EXE
 generators.register [ new gcc-linking-generator gcc.link.dll : LIB OBJ : SHARED_LIB 
     : <toolset>gcc ] ;
 
+generators.override gcc.prebuilt : builtin.prebuilt ;
 
 
 
-# Declare flags and action for linking
+# Declare flags for linking
+# First, the common flags
 flags gcc.link OPTIONS <debug-symbols>on : -g ;
-# Strip the binary when no debugging is needed.
-# We use --strip-all flag as opposed to -s since icc
-# (intel's compiler) is generally option-compatible with
-# and inherits from gcc toolset, but does not support -s
-flags gcc.link OPTIONS <debug-symbols>off : -Wl,--strip-all ;
 flags gcc.link OPTIONS <profiling>on : -pg ;
 flags gcc.link OPTIONS <linkflags> ;
 flags gcc.link LINKPATH <library-path> ;
 flags gcc.link FINDLIBS-ST <find-static-library> ;
 flags gcc.link FINDLIBS-SA <find-shared-library> ;
 flags gcc.link LIBRARIES <library-file> ;
+
 # For <link-runtime>static we made sure there are no dynamic libraries 
 # in the link
 flags gcc.link OPTIONS <link-runtime>static : -static ;
-flags gcc.link RPATH <dll-path> ;
-flags gcc.link RPATH_LINK <xdll-path> ;
 
-# This permits shared libraries with non-PIC code on Solaris
-# VP, 2004/09/07: Now that we have -fPIC hardcode in link.dll,
-# the following is not needed. Whether -fPIC should be hardcoded,
-# is a separate question.
-#if [ os.name ] = SOLARIS
-#{
-#    flags gcc.link OPTIONS <link>shared : -mimpure-text ;
-#}
+# Now, the vendor specific flags
+# The parameter linker can be either gnu or sun
+rule init-link-flags ( toolset linker condition )
+{
+    switch $(linker)
+    {
+    case gnu :
+        {
+        # Strip the binary when no debugging is needed.
+        # We use --strip-all flag as opposed to -s since icc
+        # (intel's compiler) is generally option-compatible with
+        # and inherits from gcc toolset, but does not support -s
+        flags $(toolset).link OPTIONS $(condition)/<debug-symbols>off : -Wl,--strip-all 
+          : unchecked ;
+        flags $(toolset).link RPATH $(condition) : <dll-path> : unchecked ;
+        flags $(toolset).link RPATH_LINK $(condition) : <xdll-path> : unchecked ;
+        }
+    case darwin :
+        {
+        # we can't pass -s to ld unless we also pass -static
+        # so we removed -s completly from OPTIONS and add it
+        # to ST_OPTIONS            
+        flags $(toolset).link ST_OPTIONS $(condition)/<debug-symbols>off : -s 
+           : unchecked ;  
+        flags $(toolset).link RPATH $(condition) : <dll-path> : unchecked ;
+        flags $(toolset).link RPATH_LINK $(condition) : <xdll-path> : unchecked ;
+        }
 
+    case sun :
+        {
+        flags $(toolset).link OPTIONS $(condition)/<debug-symbols>off : -Wl,-s 
+            : unchecked ;
+        flags $(toolset).link RPATH $(condition) : <dll-path> : unchecked ;
+        # Solaris linker does not have a separate -rpath-link, but
+        # allows to use -L for the same purpose.
+        flags $(toolset).link LINKPATH $(condition) : <xdll-path> : unchecked ;
+
+        # This permits shared libraries with non-PIC code on Solaris
+        # VP, 2004/09/07: Now that we have -fPIC hardcode in link.dll,
+        # the following is not needed. Whether -fPIC should be hardcoded,
+        # is a separate question.
+        # AH, 2004/10/16: it is still necessary because some tests link
+        # against static libraries that were compiled without PIC.
+        flags $(toolset).link OPTIONS $(condition)/<link>shared : -mimpure-text 
+          : unchecked ;
+        }
+    case * :
+        {
+            errors.user-error
+            "$(toolset) initialization: invalid linker '$(linker)'" :
+            "The value '$(linker)' specified for <linker> is not recognized." :
+            "Possible values are 'sun', 'gnu'" ;
+        }
+    }
+}
+
+# Declare actions for linking
 rule link ( targets * : sources * : properties * )
 {
     SPACE on $(targets) = " " ;    
@@ -194,7 +260,7 @@ rule link ( targets * : sources * : properties * )
 
 actions link bind LIBRARIES
 {
-    "$(CONFIG_COMMAND)" $(OPTIONS) -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -Wl,-rpath-link$(SPACE)-Wl,"$(RPATH_LINK)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA)  
+    "$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -Wl,-rpath-link$(SPACE)-Wl,"$(RPATH_LINK)" -o "$(<)" "$(>)" "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(OPTIONS) 
 }
 
 # Declare action for creating static libraries
@@ -218,7 +284,7 @@ rule link.dll ( targets * : sources * : properties * )
 # Differ from 'link' above only by -shared.
 actions link.dll bind LIBRARIES
 {
-    "$(CONFIG_COMMAND)" $(OPTIONS) -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -o "$(<)" -Wl,-h$(SPACE)-Wl,$(<[1]:D=) -shared "$(>)"  "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA)  
+    "$(CONFIG_COMMAND)" -L"$(LINKPATH)" -Wl,-R$(SPACE)-Wl,"$(RPATH)" -o "$(<)" $(HAVE_SONAME)-Wl,-h$(SPACE)-Wl,$(<[1]:D=) -shared "$(>)"  "$(LIBRARIES)" -l$(FINDLIBS-ST) -l$(FINDLIBS-SA) $(OPTIONS)  
 }
 
 # Set up threading support. It's somewhat contrived, so perform it at the end,
@@ -246,6 +312,12 @@ else if [ modules.peek : UNIX ]
         flags gcc OPTIONS <threading>multi : -pthread ;
         # there is no -lrt on BSD
         }
+    case DragonFly :
+        {
+        flags gcc OPTIONS <threading>multi : -pthread ;
+        # there is no -lrt on BSD - DragonFly is a FreeBSD variant,
+        # which anoyingly doesn't say it's a *BSD.
+        }
     case IRIX :
         {
         # gcc on IRIX does not support multi-threading, don't set anything here.
@@ -261,4 +333,3 @@ else if [ modules.peek : UNIX ]
         }
     }
 }
-
