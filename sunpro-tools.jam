@@ -4,18 +4,26 @@
 # This software is provided "as is" without express or implied warranty,
 # and with no claim as to its suitability for any purpose.
 
-# Sun Workshop 6 C++ compiler
+# The following #// line will be used by the regression test table generation
+# program as the column heading for HTML tables. Must not include version
+# number.
+#//<a href="http://wwws.sun.com/software/sundev/suncc/index.html">Sun<br>C++</a>
+
+# Sun Workshop 6 / Sun ONE C++ compiler
 
 # singleton variables...
 set-as-singleton SUNPRO_ROOT SUNPRO_BIN_PATH ; 
 
-# compute sunpro bin path
 # You can either put the sunpro bin directory in your PATH, or you can set
 # SUNPRO_ROOT to point at the sunpro installation directory, or you can set
 # SUNPRO_BIN_PATH to point at sunpro bin directory
+# SUNPRO_CC to name the C++ compiler executable (default: CC)
+# SUNPRO_cc to name the C compiler executable (default: cc)
 
 SUNPRO_BIN_PATH = $(SUNPRO_ROOT)$(SLASH)bin$(SLASH) ;
 SUNPRO_BIN_PATH ?= "" ; # Don't clobber adjoining text if SUNPRO_ROOT isn't set
+SUNPRO_cc ?= $(SUNPRO_BIN_PATH)cc ;
+SUNPRO_CC ?= $(SUNPRO_BIN_PATH)CC ;
 
 flags sunpro LINKFLAGS <runtime-link>static  : -staticlib=Crun ;
 flags sunpro LINKFLAGS <target-type>$(SHARED_TYPES) : -G ;
@@ -29,7 +37,6 @@ flags sunpro CFLAGS <optimization>space : -O2 -xspace ;
 flags sunpro C++FLAGS <inlining>off : +d ;
 
 flags sunpro CFLAGS <threading>multi : -mt ;
-flags sunpro LINKFLAGS <threading>multi : -lrt ;
 
 flags sunpro C++FLAGS <rtti>on  : -features=rtti ;
 flags sunpro C++FLAGS <rtti>off : -features=no%rtti ;
@@ -46,6 +53,9 @@ flags sunpro CFLAGS $(.ARCH)/<instruction-set>v9 : -xarch=v9 ;
 flags sunpro CFLAGS $(.ARCH)/<instruction-set>supersparc : -xarch=v8 -xchip=super ;
 flags sunpro CFLAGS $(.ARCH)/<instruction-set>hypersparc : -xarch=v8 -xchip=hyper ;
 flags sunpro CFLAGS $(.ARCH)/<instruction-set>ultrasparc : -xarch=v8plus -xchip=ultra ;
+
+# The POSIX real-time library is always needed (nanosleep, clock_gettime etc.)
+flags sunpro FINDLIBS : rt ;
 
 flags sunpro CFLAGS <cflags> ;
 flags sunpro C++FLAGS <cxxflags> ;
@@ -71,7 +81,7 @@ rule Link-action
 
 actions together sunpro-Link-action bind NEEDLIBS
 {
-    $(SUNPRO_BIN_PATH)CC -o "$(<:T)" -xildoff -L$(LIBPATH) $(LINKFLAGS) "$(>:T)" "$(NEEDLIBS)" "-l$(FINDLIBS)"
+    $(SUNPRO_CC) -o "$(<:T)" -xildoff -L$(LIBPATH) $(LINKFLAGS) "$(>:T)" "$(NEEDLIBS)" "-l$(FINDLIBS)"
 }
 
 #### Archive ####
@@ -83,7 +93,7 @@ rule Archive-action
 
 actions together sunpro-Archive-action
 {
-    $(SUNPRO_BIN_PATH)CC -xar $(ARFLAGS) -o "$(<:T)" "$(>:T)"
+    $(SUNPRO_CC) -xar $(ARFLAGS) -o "$(<:T)" "$(>:T)"
 }
 
 #### Cc #####
@@ -96,7 +106,7 @@ rule Cc-action
 
 actions sunpro-Cc-action
 {
-    $(SUNPRO_BIN_PATH)cc -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
+    $(SUNPRO_cc) -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -108,6 +118,6 @@ rule C++-action
 
 actions sunpro-C++-action
 {
-    $(SUNPRO_BIN_PATH)CC -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
+    $(SUNPRO_CC) -c -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 

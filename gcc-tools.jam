@@ -46,7 +46,6 @@
 # singleton variables...
 set-as-singleton GCC_ROOT_DIRECTORY GCC_BIN_DIRECTORY GCC_INCLUDE_DIRECTORY GCC_STDLIB_DIRECTORY ;
 
-flags gcc GCC_ROOT_DIRECTORY : $(GCC_ROOT_DIRECTORY) ;
 flags gcc GCC_BIN_DIRECTORY : $(GCC_BIN_DIRECTORY) ;
 flags gcc GCC_INCLUDE_DIRECTORY : $(GCC_INCLUDE_DIRECTORY) ;
 flags gcc GCC_STDLIB_DIRECTORY : $(GCC_STDLIB_DIRECTORY) ;
@@ -73,8 +72,8 @@ flags gcc CFLAGS <inlining>off : -fno-inline ;
 flags gcc CFLAGS <inlining>on : -Wno-inline ;
 flags gcc CFLAGS <inlining>full : -finline-functions -Wno-inline ;
 
-flags gcc GXX : $(GXX) ;
-flags gcc GCC : $(GCC) ;
+flags gcc .GXX : $(GXX) ;
+flags gcc .GCC : $(GCC) ;
 
 #
 # set threading options for various platforms:
@@ -119,14 +118,22 @@ else if $(UNIX)
         # MacOS X, doesn't need any threading options set
         # -lpthread is linked to by default.
         # There is no gcc/g++, we need to use cc/c++ instead:
-        GCC ?= cc ;
-        GXX ?= c++ ;
+        .GCC ?= cc ;
+        .GXX ?= c++ ;
         }
     case *BSD :
         {
         flags gcc CFLAGS <threading>multi : -pthread ;
         flags gcc LINKFLAGS <threading>multi : -pthread ;
         # there is no -lrt on BSD
+        }
+    case IRIX :
+        {
+        # gcc on IRIX does not support multi-threading, don't set anything here.
+        }
+    case HP_UX :
+        {
+        # gcc on HP-UX does not support multi-threading, don't set anything here
         }
     case * :
         {
@@ -274,8 +281,8 @@ if $(MIPS)
 
 #
 # define compiler names if not set:
-GCC ?= gcc ;
-GXX ?= g++ ;
+.GCC ?= gcc ;
+.GXX ?= g++ ;
 
 
 flags gcc CFLAGS <profiling>on : -pg ;
@@ -395,7 +402,7 @@ actions gcc-Link-action bind NEEDLIBS NEEDIMPS
 {
     $(SHELL_SET)$(gSHELL_LIBPATH)=$(RUN_LD_LIBRARY_PATH)
     $(SHELL_EXPORT)$(gSHELL_LIBPATH)
-    $(GCC_BIN_DIR)$(GXX) $(IMPLIB_COMMAND)$(<[2]) $(LINKFLAGS) -o "$(<[1])$(OUTTAG)" -L"$(LIBPATH:T)" -L"$(STDLIBPATH:T)" "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" "$(IMPLIB_FLAGS)$(NEEDIMPS)" -l$(FINDLIBS) $(LNOPT)$(RPATH_LINK). $(LNOPT)$(SONAME)$(<[1]:D=)$(SOTAG)
+    $(.GXX[1]:R=$(GCC_BIN_DIR)) $(.GXX[2-]) $(IMPLIB_COMMAND)$(<[2]) $(LINKFLAGS) -o "$(<[1])$(OUTTAG)" -L"$(LIBPATH:T)" -L"$(STDLIBPATH:T)" "$(>)" "$(NEEDLIBS)" "$(NEEDLIBS)" "$(IMPLIB_FLAGS)$(NEEDIMPS)" -l$(FINDLIBS) $(LNOPT)$(RPATH_LINK). $(LNOPT)$(SONAME)$(<[1]:D=)$(SOTAG)
     $(ACTION_1)$(LN)$(SPACE)-fs$(SPACE)"$(<[1]:D=)$(OUTTAG)"$(SPACE)"$(<[1])"
 }
 
@@ -409,7 +416,7 @@ rule Cc-action
 
 actions gcc-Cc-action
 {
-    $(GCC_BIN_DIR)$(GCC) -c -Wall -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I$(SPACE)"$(STDHDRS)" -o "$(<)" "$(>)"
+    $(.GCC[1]:R=$(GCC_BIN_DIR)) $(.GCC[2-]) -c -Wall -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) -I"$(HDRS)" -I$(SPACE)"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### C++ ####
@@ -421,7 +428,7 @@ rule C++-action
 
 actions gcc-C++-action
 {
-    $(GXX:R=$(GCC_BIN_DIR)) -c -Wall -ftemplate-depth-100 -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I$(SPACE)"$(STDHDRS)" -o "$(<)" "$(>)"
+    $(.GXX[1]:R=$(GCC_BIN_DIR)) $(.GXX[2-]) -c -Wall -ftemplate-depth-100 -U$(UNDEFS) -D$(DEFINES) $(CFLAGS) $(C++FLAGS) -I"$(HDRS)" -I$(SPACE)"$(STDHDRS)" -o "$(<)" "$(>)"
 }
 
 #### Archive ####

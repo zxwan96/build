@@ -16,6 +16,10 @@
 # - Figure out what to do with the so_locations file.
 # - Figure out what to do with the ii_files directory.
 
+# The following #// line will be used by the regression test table generation
+# program as the column heading for HTML tables. Must not include version number.
+#//<a href="http://www.sgi.com/developers/devtools/languages/mipspro.html">SGI<br>MIPSpro</a>
+
 # compute directories for invoking MIPSpro: first try ROOT and
 # TOOLROOT, which are traditionally used for this purpose.
 MIPSPRO_ROOT_DIRECTORY ?= "$(ROOT)/usr" ;
@@ -53,7 +57,11 @@ flags mipspro LINKFLAGS : -nostdlib ;
 flags mipspro LINKFLAGS <target-type>$(SHARED_TYPES) : -shared ;
 flags mipspro LINKFLAGS <debug-symbols>off : -s ;
 
+# We better link the maths library unconditionally.
+flags mipspro FINDLIBS : m ;
+
 flags mipspro DEFINES <threading>multi : _SGI_MP_SOURCE ;
+flags mipspro FINDLIBS <threading>multi : pthread ;
 
 flags mipspro CFLAGS : -nostdinc
                        -LANG:std -OPT:Olimit=0 -OPT:IEEE_NaN_inf=ON -no_auto_include

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="generator" content=
-    "HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org">
+    "Microsoft FrontPage 5.0">
     <meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <meta name="ProgId" content="FrontPage.Editor.Document">
@@ -79,16 +79,18 @@
           release you downloaded)</i></p>
         </blockquote>
       </li>
-      <li>
-        Invoke the build system, specifying the <a href=
+      <li>Invoke the build system, specifying the <a href=
         "#Tools">toolset</a>(s) you wish to use. The example is for the GNU
         and Metrowerks compilers. 
         <blockquote>
           <p><code>bjam&nbsp;"-sTOOLS=gcc&nbsp;metrowerks"</code></p>
         </blockquote>
       </li>
-      <li>For more sophisticated invocation options, see the <a href=
-      "build_system.htm#initiating">initiating builds documentation</a>.</li>
+      <li>If you don't want the build results placed within the boost directory 
+      tree, use the <code>ALL_LOCATE_TARGET</code> to control the target 
+      location. For this and other sophisticated invocation options, see the <a href=
+      "build_system.htm#initiating">initiating builds documentation</a>.<br>&nbsp;
+      </li>
       <li>
         To build a single boost library (rather than the whole lot), cd into
         that library's build subdirectory and build from there: 
@@ -99,7 +101,6 @@
         </blockquote>
       </li>
     </ul>
-    <p>&nbsp;</p>
     <h2><a name="Configuring">Configuring the tools</a></h2>
     <p>The build system's toolsets are designed to work in either of two
     ways:</p>
@@ -143,10 +144,20 @@
       <tr>
         <td><a href="como-tools.html"><code>como</code></a></td>
         <td><a href="http://www.comeaucomputing.com">Comeau C++</a> compiler
+        front-end for non-Windows platforms</td>
+      </tr>
+      <tr>
+        <td><code><a href="como-tools.html">como-win32</a></code></td>
+        <td><a href="http://www.comeaucomputing.com">Comeau C++</a> compiler
         front-end for Windows, using Microsoft <a href=
         "http://msdn.microsoft.com/visualc/">Visual C++</a>as a
         back-end.</td>
       </tr>
+      <tr>
+        <td><a href="edg-tools.html"><code>edg</code></a></td>
+        <td><a href="http://www.edg.com/">Edison Design Group</a> compiler
+              front-end (evaluation version)</td>
+      </tr>      
       <tr>
         <td><a href="gcc-tools.html"><code>gcc</code></a></td>
         <td><a href="http://gcc.gnu.org">GNU GCC</a> on Unix and <a href=
@@ -229,6 +240,11 @@
         implementation</td>
       </tr>
       <tr>
+        <td><a href="sunpro-tools.html"><code>sunpro</code></a></td>
+        <td><a href="http://wwws.sun.com/software/sundev/suncc/index.html">SunPRO
+        C++</a> compiler</td>
+      </tr>      
+      <tr>
         <td><a href="tru64cxx-tools.html"><code>tru64cxx</code></a></td>
         <td><a href="http://www.tru64unix.compaq.com/cplus/">Compaq C++</a>
         for Tru64 UNIX (versions prior to 6.5)</td>
@@ -245,11 +261,14 @@
       </tr>
       <tr>
         <td><a href="vc7-tools.html"><code>vc7</code></a></td>
+        <td>Microsoft <a
+        href="http://msdn.microsoft.com/visualc/">Visual C++</a>
+        command-line tools from Visual Studio .NET.</td>
+      </tr>
+      <tr>
+        <td><a href="vc7.1-tools.html"><code>vc7.1</code></a></td>
         <td>Microsoft <a href="http://msdn.microsoft.com/visualc/">Visual
-        C++</a> command-line tools, in case you are using the <a href=
-        "msvc-tools.html"><code>msvc</code></a> toolset for a <a href=
-        "http://msdn.microsoft.com/visualc/productinfo/previous/default.asp">Visual
-        C++ 6.x</a>.</td>
+        C++</a> command-line tools from Visual Studio .NET 2003.</td>
       </tr>
     </table>
     <p>Unless otherwise specified, the library is assumed to be the one
@@ -284,9 +303,9 @@
     compiler (other windows compilers don't play particularly well with this
     executable).</p>
     <hr>
-    <p>Revised <!--webbot bot="Timestamp" startspan s-type="EDITED"
-        s-format="%d %B, %Y" -->16 December, 2002<!--webbot bot="Timestamp"
-        i-checksum="38515" endspan --></p>
+    <p>Revised 
+    <!--webbot bot="Timestamp" s-type="EDITED"
+        s-format="%d %B, %Y" startspan -->28 May, 2003<!--webbot bot="Timestamp" endspan i-checksum="13988" --></p>
     <p>&copy; Copyright 2001 Beman Dawes</p>
     <p>&nbsp;</p>
   </body>
