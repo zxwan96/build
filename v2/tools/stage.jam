@@ -233,15 +233,7 @@ class stage-target-class : basic-target
         {
             result += [ $(i).all-referenced-targets ] ;
         }
-        local result2 ;
-        for local r in $(result)
-        {
-            if $(r:G) != <use>
-            {
-                result2 += $(r:G=) ;
-            }            
-        }        
-        result = [ sequence.unique $(result2) ] ;        
+        result = [ sequence.unique $(result) ] ;        
     }
         
     rule check-for-link-compatibility ( * : * )
