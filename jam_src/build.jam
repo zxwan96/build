@@ -277,7 +277,7 @@ jam.source =
     timestamp.c variable.c modules.c strings.c filesys.c 
     builtins.c pwd.c class.c native.c modules/set.c 
     modules/path.c modules/regex.c modules/property-set.c
-    modules/sequence.c modules/order.c
+    modules/sequence.c
     ;
 if $(NT)
 {
@@ -607,7 +607,6 @@ dist.source = $(dist.source:D=)
     [ .path modules regex.c ]
     [ .path modules property-set.c ]
     [ .path modules sequence.c ]
-    [ .path modules order.c ]
     boost-jam.spec
     ;
 dist.bin =

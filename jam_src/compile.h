@@ -46,7 +46,6 @@ LIST *compile_switch( PARSE *parse, FRAME *frame );
 LIST *compile_while( PARSE *parse, FRAME *frame );
 
 LIST *evaluate_rule( char *rulename, FRAME *frame );
-LIST *call_rule( char *rulename, FRAME* caller_frame, ...);
 
 regexp* regex_compile( const char* pattern );
 

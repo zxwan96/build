@@ -7,21 +7,6 @@
 #include "../variable.h"
 #include "../compile.h"
 
-LIST* get_grist(char* f)
-{
-    char* end = strchr(f, '>');
-    string s[1];
-    LIST* result;
-    
-    string_new(s);
-
-    string_append_range(s, f, end+1);
-    result = list_new(0, newstr(s->value));
-        
-    string_free(s);
-    return result;
-}
-
 /*
 rule create ( raw-properties * )
 {
@@ -41,33 +26,13 @@ rule create ( raw-properties * )
 LIST *property_set_create( PARSE *parse, FRAME *frame )
 {
     LIST* properties = lol_get( frame->args, 0 );    
-    LIST* sorted = 0;
-    LIST* order_sensitive = 0;
-    LIST* unique;
-    LIST* tmp;
+    LIST* sorted = list_sort(properties);
+    LIST* unique = list_unique(sorted);
+
     LIST* val;
+    LIST* tmp;
+
     string var[1];
-
-#if 0
-    /* Sort all properties which are not order sensitive */
-    for(tmp = properties; tmp; tmp = tmp->next) {
-        LIST* g = get_grist(tmp->string);
-        LIST* att = call_rule("feature.attributes", frame, g, 0);
-        if (list_in(att, "order-sensitive")) {
-            order_sensitive = list_new( order_sensitive, tmp->string);
-        } else {
-            sorted = list_new( sorted, tmp->string);
-        }
-        list_free(att);
-    }
-    
-    sorted = list_sort(sorted);
-    sorted = list_append(sorted, order_sensitive);
-    unique = list_unique(sorted);
-#endif
-    sorted = list_sort(properties);
-    unique = list_unique(sorted);
-
     string_new(var);
     string_append(var, ".ps.");
     
@@ -78,8 +43,17 @@ LIST *property_set_create( PARSE *parse, FRAME *frame )
     val = var_get(var->value);
     if (val == 0) 
     {          
-        val = call_rule("new", frame, 
-                        list_append(list_new(0, "property-set"), unique), 0);                
+        FRAME       inner[1];
+        frame_init( inner );
+        inner->prev = frame;
+        inner->module = frame->module;
+        inner->procedure = 0;
+        
+        lol_add( inner->args, list_append(list_new(0, "property-set"), unique));
+        
+        val = evaluate_rule("new", inner);
+        
+        frame_free(inner);
         
         var_set(newstr(var->value), list_copy(0, val), VAR_SET);
     }
@@ -89,8 +63,10 @@ LIST *property_set_create( PARSE *parse, FRAME *frame )
     }
     
     string_free(var);
-    /* The 'unique' variable is freed in 'call_rule'. */
+    /* The 'unique' is freed in 'frame_free' class. */
     list_free(sorted);
+
+
 
     return val;
 
