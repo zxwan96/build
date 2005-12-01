@@ -140,7 +140,7 @@ rule reverse ( path )
 #
 local rule join-imp ( elements + )
 {
-    return [ NORMALIZE_PATH $(elements) ] ;
+    return [ NORMALIZE_PATH $(elements:J="/") ] ;
 }
 
 #
@@ -184,15 +184,7 @@ rule root ( path root )
 #
 rule pwd ( )
 {
-    if $(.pwd)
-    {
-        return $(.pwd) ;
-    }
-    else
-    {
-        .pwd = [ make [ PWD ] ] ;
-        return $(.pwd) ;
-    }    
+    return [ make [ PWD ] ] ;
 }
 
 #

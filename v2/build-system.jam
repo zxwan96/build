@@ -46,7 +46,7 @@ if $(test-config)
 {
     module test-config 
     {
-        import toolset : using : using ;
+        import project : _using : using ;
     }
     import test-config ;    
 }

@@ -319,9 +319,6 @@ local rule load-jamfile (
         errors.error "The value of the .current-project variable"
           : "has magically changed after loading a Jamfile."
           : "This means some of the targets might be defined a the wrong project."
-          : "after loading " $(jamfile-module) 
-          : "expected value " $(saved-project)  
-          : "actual value " $(.current-project)
           ;
     }
 
@@ -627,8 +624,7 @@ class project-attributes
         }            
         else if $(attribute) = "build-dir"
         {
-            self.build-dir = [ path.root 
-                [ path.make $(specification) ] $(self.location) ] ;
+            self.build-dir = [ path.root $(specification) $(self.location) ] ;
         }        
         else if ! $(attribute) in "id" "default-build" "location" "source-location"
           "parent" "projects-to-build" "project-root"
@@ -718,6 +714,20 @@ rule use ( id : location )
     .current-project = $(saved-project) ;
 }
 
+
+# Initializes an additional toolset-like module.
+# First load 'toolset-module' and then calls its 'init'
+# rule with trailing arguments
+rule _using ( toolset-module : * )
+{
+    import $(toolset-module) ;
+    if ! $(.$(toolset-module)-init-callled)
+    {        
+        $(toolset-module)-init-callled = true ;
+        $(toolset-module).init $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
+    }    
+}
+
 # This module defines rules common to all projects
 module project-rules
 {                
@@ -735,7 +745,7 @@ module project-rules
         local x = [ modules.peek : BOOST_BUILD_PATH ] ;
         local caller = [ modules.binding $(__name__) ] ;
         modules.poke : BOOST_BUILD_PATH : $(caller:D) $(x) ;
-        toolset.using $(1) : $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
+        project._using $(1) : $(2) : $(3) : $(4) : $(5) : $(6) : $(7) : $(8) : $(9) ;
         modules.poke : BOOST_BUILD_PATH : $(x) ;
         
         # The above might have clobbered .current-project
@@ -751,12 +761,12 @@ module project-rules
         modules.import project ;
                 
         local caller = [ CALLER_MODULE ] ;
-        local saved = [ modules.peek project : .current-project ] ;
         module $(caller)
         {
             modules.import $(1) : $(2) : $(3) ;
         }
-        modules.poke project : .current-project : $(saved) ;        
+        modules.poke project : .current-project 
+          : [ project.target $(__name__) ] ;                        
     }
 
         
@@ -889,9 +899,7 @@ module project-rules
         import project ;
         import sequence ;
         
-        local current = [ project.current ] ;
-                
-        local location = [ $(current).get source-location ] ;
+        local location = [ project.attribute $(__name__) source-location ] ;
 
         local result ;
         local paths = [ path.glob $(location) : 

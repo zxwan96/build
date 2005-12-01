@@ -27,7 +27,7 @@
 #  way, instead of relying on just target type.
 
 import "class" : new ;
-import property virtual-target property-set ;
+import property virtual-target ;
 
 #  Base scanner class. 
 class scanner 
@@ -87,25 +87,21 @@ class common-scanner : scanner
 
 # Returns an instance of previously registered scanner,
 # with the specified properties.
-rule get ( scanner-class : property-set ) 
+rule get ( scanner-class : properties * ) 
 {
     if ! $(scanner-class) in $(.registered)
     {
         error "attempt to get unregisted scanner" ;
     }
-    
-    local r = $(.rv-cache.$(property-set)) ;
+    local r = [ property.select $(.relevant-properties.$(scanner-class)) :
+                $(properties) ] ;
     if ! $(r)
     {
-        r = [ property-set.create 
-            [ property.select $(.relevant-properties.$(scanner-class)) :
-              [ $(property-set).raw ] ] ] ;        
-        .rv-cache.$(property-set) = $(r) ;
-    }
-        
+        r = "" ;
+    }    
     if ! $(scanner.$(scanner-class).$(r:J=-))
     {
-        scanner.$(scanner-class).$(r:J=-) = [ new $(scanner-class) [ $(r).raw ] ] ;
+        scanner.$(scanner-class).$(r:J=-) = [ new $(scanner-class) $(r) ] ;
     }
     return $(scanner.$(scanner-class).$(r:J=-)) ;    
 }
