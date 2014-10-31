@@ -1,11 +1,11 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Custom commands</title>
-<link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.69.1">
-<link rel="start" href="../../index.html" title="Boost.Build V2 User Manual">
-<link rel="up" href="../tasks.html" title="Chapter 5. Common tasks">
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="../../index.html" title="Boost.Build V2 User Manual">
+<link rel="up" href="../tasks.html" title="Chapter&#160;5.&#160;Common tasks">
 <link rel="prev" href="testing.html" title="Testing">
 <link rel="next" href="../reference/precompiled_headers.html" title="Precompiled Headers">
 </head>
@@ -13,16 +13,16 @@
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="testing.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tasks.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../reference/precompiled_headers.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="testing.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tasks.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../reference/precompiled_headers.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="bbv2.builtins.raw"></a>Custom commands</h2></div></div></div>
 <p>
       For most main target rules, Boost.Build automatically figures out
       the commands to run.  When you want to use new
       file types or support new tools, one approach is to extend Boost.Build to
-      support them smoothly, as documented in <a href="../extender.html" title="Chapter 7. Extender Manual">Chapter 7, <i>Extender Manual</i></a>.
+      support them smoothly, as documented in <a class="xref" href="../extender.html" title="Chapter&#160;7.&#160;Extender Manual">Chapter&#160;7, <i>Extender Manual</i></a>.
       However, if the new tool is only used in a single place, it
       might be easier just to specify the commands to run explicitly.
     </p>
@@ -47,7 +47,7 @@
     </p>
 <p>
       Suppose you want to create the file <code class="filename">file.out</code> from
-      the file <code class="filename">file.in</code> by running the command <span><strong class="command">
+      the file <code class="filename">file.in</code> by running the command <span class="command"><strong>
       in2out</strong></span>. Here is how you would do this in Boost.Build:
 </p>
 <pre class="programlisting">
@@ -58,9 +58,9 @@ actions in2out
 }
 </pre>
 <p>
-      If you run <span><strong class="command">b2</strong></span> and <code class="filename">file.out</code> does
-      not exist, Boost.Build will run the <span><strong class="command">in2out</strong></span> command to
-      create that file. For more details on specifying actions, see <a href="../overview/jam_language.html#bbv2.overview.jam_language.actions">the section called &#8220;Boost.Jam Language&#8221;</a>.
+      If you run <span class="command"><strong>b2</strong></span> and <code class="filename">file.out</code> does
+      not exist, Boost.Build will run the <span class="command"><strong>in2out</strong></span> command to
+      create that file. For more details on specifying actions, see <a class="xref" href="../overview/jam_language.html#bbv2.overview.jam_language.actions">the section called &#8220;Boost.Jam Language&#8221;</a>.
     </p>
 <p>
       It could be that you just want to run some command unconditionally, and
@@ -108,7 +108,7 @@ rule generating-rule ( project name : property-set : sources * )
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
+<td align="right"><div class="copyright-footer">Copyright &#169; 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
       <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -116,7 +116,7 @@ rule generating-rule ( project name : property-set : sources * )
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="testing.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../tasks.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../reference/precompiled_headers.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="testing.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tasks.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../reference/precompiled_headers.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

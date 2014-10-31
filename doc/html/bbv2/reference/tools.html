@@ -1,11 +1,11 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Builtin tools</title>
-<link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.69.1">
-<link rel="start" href="../../index.html" title="Boost.Build V2 User Manual">
-<link rel="up" href="../reference.html" title="Chapter 6. Reference">
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="../../index.html" title="Boost.Build V2 User Manual">
+<link rel="up" href="../reference.html" title="Chapter&#160;6.&#160;Reference">
 <link rel="prev" href="../overview/builtins/features.html" title="Builtin features">
 <link rel="next" href="modules.html" title="Builtin modules">
 </head>
@@ -13,15 +13,15 @@
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../overview/builtins/features.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="modules.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../overview/builtins/features.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="modules.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="bbv2.reference.tools"></a>Builtin tools</h2></div></div></div>
-<div class="toc"><dl>
+<div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.compilers">C++ Compilers</a></span></dt>
-<dt><span class="section"><a href="tools.html#idp3761616">Third-party libraries</a></span></dt>
-<dt><span class="section"><a href="tools.html#idp3781264">Documentation tools</a></span></dt>
+<dt><span class="section"><a href="tools.html#idp88015840">Third-party libraries</a></span></dt>
+<dt><span class="section"><a href="tools.html#idp88052272">Documentation tools</a></span></dt>
 </dl></div>
 <p>Boost.Build comes with support for a large number of C++ compilers,
       and other tools. This section documents how to use those tools.</p>
@@ -38,10 +38,10 @@ using gcc : 4.0 : g++-4.0 ;
 </pre>
 <p>The options that can be passed to each tool are documented in the
       subsequent sections.</p>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="bbv2.reference.tools.compilers"></a>C++ Compilers</h3></div></div></div>
-<div class="toc"><dl>
+<div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.compiler.gcc">GNU C++</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.compiler.darwin">Apple Darwin gcc</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.compiler.msvc">Microsoft Visual C++</a></span></dt>
@@ -60,7 +60,7 @@ using gcc : 4.0 : g++-4.0 ;
           of support module for compiler is also the value for
           the <code class="computeroutput">toolset</code> feature that can be used to explicitly
           request that compiler. </p>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.gcc"></a>GNU C++</h4></div></div></div>
 <p>The <code class="computeroutput">gcc</code> module supports the
@@ -68,7 +68,7 @@ using gcc : 4.0 : g++-4.0 ;
           on Linux, a number of Unix-like system including SunOS and on Windows 
           (either <a href="http://www.cygwin.com" target="_top">Cygwin</a> or 
           <a href="http://www.mingw.org" target="_top">MinGW</a>). On Mac OSX, it is recommended
-          to use system gcc, see <a href="tools.html#bbv2.reference.tools.compiler.darwin" title="Apple Darwin gcc">the section called &#8220;Apple Darwin gcc&#8221;</a>.
+          to use system gcc, see <a class="xref" href="tools.html#bbv2.reference.tools.compiler.darwin" title="Apple Darwin gcc">the section called &#8220;Apple Darwin gcc&#8221;</a>.
           </p>
 <p>The <code class="computeroutput">gcc</code> module is initialized using the following
           syntax:</p>
@@ -78,10 +78,10 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
 <p>
           If the version is not explicitly specified, it will be
           automatically detected by running the compiler with the <code class="computeroutput">-v</code>
-          option. If the command is not specified, the <span><strong class="command">g++</strong></span>
+          option. If the command is not specified, the <span class="command"><strong>g++</strong></span>
           binary will be searched in <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -104,13 +104,13 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
                 that will be used with the version of gcc that is being
                 configured. This setting makes sense only for Windows and only
                 if you plan to use resource files. By
-                default <span><strong class="command">windres</strong></span> will be used.</p></dd>
+                default <span class="command"><strong>windres</strong></span> will be used.</p></dd>
 <dt><span class="term"><code class="literal">rc-type</code></span></dt>
 <dd><p>Specifies the type of resource compiler. The value can
                 be either <code class="computeroutput">windres</code> for msvc resource compiler,
                 or <code class="computeroutput">rc</code> for borland's resource compiler.</p></dd>
 </dl></div>
-<a class="indexterm" name="idp3612176"></a>
+<a class="indexterm" name="idp87739568"></a>
 
           In order to compile 64-bit applications, you have to specify
           <code class="computeroutput">address-model=64</code>, and the <code class="computeroutput">instruction-set</code>
@@ -119,7 +119,7 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
           <code class="literal">athlon64</code> and <code class="literal">athlon-fx</code>.
 
         </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.darwin"></a>Apple Darwin gcc</h4></div></div></div>
 <p>The <code class="computeroutput">darwin</code> module supports the version of gcc that is
@@ -127,7 +127,7 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
           to that of the gcc module.
           </p>
 <p>
-          <a class="indexterm" name="idp3616904"></a>
+          <a class="indexterm" name="idp87748448"></a>
           The darwin toolset can generate so called "fat"
           binaries&#8212;binaries that can run support more than one
           architecture, or address mode. To build a binary that can run both
@@ -138,10 +138,10 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
           properties, a "4-way" fat binary will be generated.
           </p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.msvc"></a>Microsoft Visual C++</h4></div></div></div>
-<div class="toc"><dl>
+<div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#v2.reference.tools.compiler.msvc.64">64-bit support</a></span></dt>
 <dt><span class="section"><a href="tools.html#v2.reference.tools.compiler.msvc.winrt">Windows Runtime support</a></span></dt>
 </dl></div>
@@ -149,13 +149,13 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
           <a href="http://msdn.microsoft.com/visualc/" target="_top">Microsoft Visual
           C++</a> command-line tools on Microsoft Windows. The supported
           products and versions of command line tools are listed below:</p>
-<div class="itemizedlist"><ul type="disc">
-<li><p>Visual Studio 2010&#8212;10.0</p></li>
-<li><p>Visual Studio 2008&#8212;9.0</p></li>
-<li><p>Visual Studio 2005&#8212;8.0</p></li>
-<li><p>Visual Studio .NET 2003&#8212;7.1</p></li>
-<li><p>Visual Studio .NET&#8212;7.0</p></li>
-<li><p>Visual Studio 6.0, Service Pack 5&#8212;6.5</p></li>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>Visual Studio 2010&#8212;10.0</p></li>
+<li class="listitem"><p>Visual Studio 2008&#8212;9.0</p></li>
+<li class="listitem"><p>Visual Studio 2005&#8212;8.0</p></li>
+<li class="listitem"><p>Visual Studio .NET 2003&#8212;7.1</p></li>
+<li class="listitem"><p>Visual Studio .NET&#8212;7.0</p></li>
+<li class="listitem"><p>Visual Studio 6.0, Service Pack 5&#8212;6.5</p></li>
 </ul></div>
 <p>The <code class="computeroutput">msvc</code> module is initialized using the following
           syntax:</p>
@@ -173,7 +173,7 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
 <p>The compiler command should be specified using forward slashes,
           and quoted.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -188,12 +188,12 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
       passed to the linker.</p></dd>
 <dt><span class="term"><code class="literal">assembler</code></span></dt>
 <dd><p>The command that compiles assembler sources. If
-              not specified, <span><strong class="command">ml</strong></span> will be used. The command
+              not specified, <span class="command"><strong>ml</strong></span> will be used. The command
               will be invoked after the setup script was executed and adjusted
               the <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">compiler</code></span></dt>
 <dd><p>The command that compiles C and C++ sources. If
-              not specified, <span><strong class="command">cl</strong></span> will be used. The command
+              not specified, <span class="command"><strong>cl</strong></span> will be used. The command
               will be invoked after the setup script was executed and adjusted
               the <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">compiler-filter</code></span></dt>
@@ -202,22 +202,22 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
               </p></dd>
 <dt><span class="term"><code class="literal">idl-compiler</code></span></dt>
 <dd><p>The command that compiles Microsoft COM interface
-              definition files. If not specified, <span><strong class="command">midl</strong></span> will
+              definition files. If not specified, <span class="command"><strong>midl</strong></span> will
               be used. The command will be invoked after the setup script was
               executed and adjusted the <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">linker</code></span></dt>
 <dd><p>The command that links executables and dynamic
-              libraries. If not specified, <span><strong class="command">link</strong></span> will be used.
+              libraries. If not specified, <span class="command"><strong>link</strong></span> will be used.
               The command will be invoked after the setup script was executed
               and adjusted the <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">mc-compiler</code></span></dt>
 <dd><p>The command that compiles Microsoft message
-              catalog files. If not specified, <span><strong class="command">mc</strong></span> will be
+              catalog files. If not specified, <span class="command"><strong>mc</strong></span> will be
               used. The command will be invoked after the setup script was
               executed and adjusted the <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">resource-compiler</code></span></dt>
 <dd><p>The command that compiles resource files. If not
-              specified, <span><strong class="command">rc</strong></span> will be used. The command will be
+              specified, <span class="command"><strong>rc</strong></span> will be used. The command will be
               invoked after the setup script was executed and adjusted the
               <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">setup</code></span></dt>
@@ -228,8 +228,8 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
               platform. Used setup script will be passed the target platform
               identifier (x86, x86_amd64, x86_ia64, amd64 or ia64) as a
               arameter. If not specified a default script is chosen based on the
-              used compiler binary, e.g. <span><strong class="command">vcvars32.bat</strong></span> or
-              <span><strong class="command">vsvars32.bat</strong></span>.</p></dd>
+              used compiler binary, e.g. <span class="command"><strong>vcvars32.bat</strong></span> or
+              <span class="command"><strong>vsvars32.bat</strong></span>.</p></dd>
 <dt>
 <span class="term"><code class="literal">setup-amd64</code>, </span><span class="term"><code class="literal">setup-i386</code>, </span><span class="term"><code class="literal">setup-ia64</code></span>
 </dt>
@@ -238,22 +238,22 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
               defined in this toolset. If not specified the global environment
               setup script is used.</p></dd>
 </dl></div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h5 class="title">
 <a name="v2.reference.tools.compiler.msvc.64"></a>64-bit support</h5></div></div></div>
-<a class="indexterm" name="idp3647368"></a><p>Starting with version 8.0, Microsoft Visual Studio can
+<a class="indexterm" name="idp87804288"></a><p>Starting with version 8.0, Microsoft Visual Studio can
             generate binaries for 64-bit processor, both 64-bit flavours of x86
             (codenamed AMD64/EM64T), and Itanium (codenamed IA64). In addition,
             compilers that are itself run in 64-bit mode, for better
             performance, are provided. The complete list of compiler
             configurations are as follows (we abbreviate AMD64/EM64T to just
             AMD64):</p>
-<div class="itemizedlist"><ul type="disc">
-<li><p>32-bit x86 host, 32-bit x86 target</p></li>
-<li><p>32-bit x86 host, 64-bit AMD64 target</p></li>
-<li><p>32-bit x86 host, 64-bit IA64 target</p></li>
-<li><p>64-bit AMD64 host, 64-bit AMD64 target</p></li>
-<li><p>64-bit IA64 host, 64-bit IA64 target</p></li>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>32-bit x86 host, 32-bit x86 target</p></li>
+<li class="listitem"><p>32-bit x86 host, 64-bit AMD64 target</p></li>
+<li class="listitem"><p>32-bit x86 host, 64-bit IA64 target</p></li>
+<li class="listitem"><p>64-bit AMD64 host, 64-bit AMD64 target</p></li>
+<li class="listitem"><p>64-bit IA64 host, 64-bit IA64 target</p></li>
 </ul></div>
 <p>
             The 32-bit host compilers can be always used, even on 64-bit
@@ -263,14 +263,14 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
             additional compilers need to be installed explicitly.
             </p>
 <p>To use 64-bit compilation you should:</p>
-<div class="orderedlist"><ol type="1">
-<li><p>Configure you compiler as usual. If you provide a
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><p>Configure you compiler as usual. If you provide a
               path to the compiler explicitly, provide the path to the 32-bit
               compiler. If you try to specify the path to any of 64-bit
               compilers, configuration will not work.</p></li>
-<li><p>When compiling, use <code class="computeroutput">address-model=64</code>,
+<li class="listitem"><p>When compiling, use <code class="computeroutput">address-model=64</code>,
               to generate AMD64 code.</p></li>
-<li><p>To generate IA64 code, use
+<li class="listitem"><p>To generate IA64 code, use
               <code class="computeroutput">architecture=ia64</code></p></li>
 </ol></div>
 <p>The (AMD64 host, AMD64 target) compiler will be used
@@ -285,10 +285,10 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
             options depending on the value of the<code class="computeroutput">instruction-set</code>
             feature.</p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h5 class="title">
 <a name="v2.reference.tools.compiler.msvc.winrt"></a>Windows Runtime support</h5></div></div></div>
-<a class="indexterm" name="idp3657040"></a><p>
+<a class="indexterm" name="idp87821168"></a><p>
             Starting with version 11.0, Microsoft Visual Studio can
             produce binaries for Windows Store and Phone in addition to 
             traditional Win32 desktop. To specify which Windows API set
@@ -302,11 +302,11 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
             the specified toolset determines what Windows version is 
             targeted. The following options are available:
             </p>
-<div class="itemizedlist"><ul type="disc">
-<li><p>Windows 8.0: toolset=msvc-11.0 windows-api=store</p></li>
-<li><p>Windows 8.1: toolset=msvc-12.0 windows-api=store</p></li>
-<li><p>Windows Phone 8.0: toolset=msvc-11.0 windows-api=phone</p></li>
-<li><p>Windows Phone 8.1: toolset=msvc-12.0 windows-api=phone</p></li>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>Windows 8.0: toolset=msvc-11.0 windows-api=store</p></li>
+<li class="listitem"><p>Windows 8.1: toolset=msvc-12.0 windows-api=store</p></li>
+<li class="listitem"><p>Windows Phone 8.0: toolset=msvc-11.0 windows-api=phone</p></li>
+<li class="listitem"><p>Windows Phone 8.1: toolset=msvc-12.0 windows-api=phone</p></li>
 </ul></div>
 <p>
             For example use the following to build for Windows Store 8.1 
@@ -322,7 +322,7 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
             </p>
 </div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.intel"></a>Intel C++</h4></div></div></div>
 <p>The <code class="computeroutput">intel-linux</code> and <code class="computeroutput">intel-win</code> modules
@@ -339,11 +339,11 @@ using intel-win : [<span class="optional"><em class="replaceable"><code>version<
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>
           If compiler command is not specified, then Boost.Build will
-          look in <code class="envar">PATH</code> for an executable <span><strong class="command">icpc</strong></span>
-          (on Linux), or <span><strong class="command">icc.exe</strong></span> (on Windows).
+          look in <code class="envar">PATH</code> for an executable <span class="command"><strong>icpc</strong></span>
+          (on Linux), or <span class="command"><strong>icc.exe</strong></span> (on Windows).
           </p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -358,7 +358,7 @@ using intel-win : [<span class="optional"><em class="replaceable"><code>version<
       passed to the linker.</p></dd>
 </dl></div>
 <p>The Linux version supports the following additional options:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">root</code></span></dt>
 <dd><p>Specifies root directory of the compiler installation.
       This option is necessary only if it is not possible to detect this
@@ -366,7 +366,7 @@ using intel-win : [<span class="optional"><em class="replaceable"><code>version<
       compiler command is a user script.</p></dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.acc"></a>HP aC++ compiler</h4></div></div></div>
 <p>The <code class="computeroutput">acc</code> module supports the
@@ -378,10 +378,10 @@ using intel-win : [<span class="optional"><em class="replaceable"><code>version<
 using acc : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>
-            If the command is not specified, the <span><strong class="command">aCC</strong></span>
+            If the command is not specified, the <span class="command"><strong>aCC</strong></span>
           binary will be searched in <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -396,7 +396,7 @@ using acc : [<span class="optional"><em class="replaceable"><code>version</code>
       passed to the linker.</p></dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.borland"></a>Borland C++ Compiler</h4></div></div></div>
 <p>The <code class="computeroutput">borland</code> module supports the command line
@@ -405,20 +405,20 @@ using acc : [<span class="optional"><em class="replaceable"><code>version</code>
           product and earlier version of it, running on Microsoft Windows.</p>
 <p>The supported products are listed below. The version reported
           by the command lines tools is also listed for reference.:</p>
-<div class="itemizedlist"><ul type="disc">
-<li><p>C++ Builder 2006&#8212;5.8.2</p></li>
-<li><p>CBuilderX&#8212;5.6.5, 5.6.4 (depending on release)</p></li>
-<li><p>CBuilder6&#8212;5.6.4</p></li>
-<li><p>Free command line tools&#8212;5.5.1</p></li>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>C++ Builder 2006&#8212;5.8.2</p></li>
+<li class="listitem"><p>CBuilderX&#8212;5.6.5, 5.6.4 (depending on release)</p></li>
+<li class="listitem"><p>CBuilder6&#8212;5.6.4</p></li>
+<li class="listitem"><p>Free command line tools&#8212;5.5.1</p></li>
 </ul></div>
 <p>The module is initialized using the following syntax:</p>
 <pre class="programlisting">
 using borland : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>If the command is not specified, Boost.Build will search for
-          a binary named <span><strong class="command">bcc32</strong></span> in <code class="envar">PATH</code>.</p>
+          a binary named <span class="command"><strong>bcc32</strong></span> in <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -433,7 +433,7 @@ using borland : [<span class="optional"><em class="replaceable"><code>version</c
       passed to the linker.</p></dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.como"></a>Comeau C/C++ Compiler</h4></div></div></div>
 <p>The <code class="computeroutput">como-linux</code> and the <code class="computeroutput">como-win</code>
@@ -445,10 +445,10 @@ using borland : [<span class="optional"><em class="replaceable"><code>version</c
 using como-linux : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>If the command is not specified, Boost.Build will search for
-          a binary named <span><strong class="command">como</strong></span> in
+          a binary named <span class="command"><strong>como</strong></span> in
           <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -468,7 +468,7 @@ using como-linux : [<span class="optional"><em class="replaceable"><code>version
           set, where <code class="envar">XXX</code> corresponds to the used backend C
           compiler.</p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.cw"></a>Code Warrior</h4></div></div></div>
 <p>The <code class="computeroutput">cw</code> module support CodeWarrior compiler,
@@ -482,10 +482,10 @@ using como-linux : [<span class="optional"><em class="replaceable"><code>version
 using cw : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>If the command is not specified, Boost.Build will search for a
-          binary named <span><strong class="command">mwcc</strong></span> in default installation paths and
+          binary named <span class="command"><strong>mwcc</strong></span> in default installation paths and
           in <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -506,22 +506,22 @@ using cw : [<span class="optional"><em class="replaceable"><code>version</code><
 <dt><span class="term"><code class="literal">setup</code></span></dt>
 <dd><p>The command that sets up environment variables
               prior to invoking the compiler. If not specified,
-              <span><strong class="command">cwenv.bat</strong></span> alongside the compiler binary
+              <span class="command"><strong>cwenv.bat</strong></span> alongside the compiler binary
               will be used.</p></dd>
 <dt><span class="term"><code class="literal">compiler</code></span></dt>
 <dd><p>The command that compiles C and C++ sources.
-              If not specified, <span><strong class="command">mwcc</strong></span> will be used. The
+              If not specified, <span class="command"><strong>mwcc</strong></span> will be used. The
               command will be invoked after the setup script was
               executed and adjusted the <code class="envar">PATH</code> variable.</p></dd>
 <dt><span class="term"><code class="literal">linker</code></span></dt>
 <dd><p>The command that links executables and dynamic
               libraries.
-              If not specified, <span><strong class="command">mwld</strong></span> will be used. The
+              If not specified, <span class="command"><strong>mwld</strong></span> will be used. The
               command will be invoked after the setup script was
               executed and adjusted the <code class="envar">PATH</code> variable.</p></dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.dmc"></a>Digital Mars C/C++ Compiler</h4></div></div></div>
 <p>The <code class="computeroutput">dmc</code> module supports the
@@ -532,10 +532,10 @@ using cw : [<span class="optional"><em class="replaceable"><code>version</code><
 using dmc : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>If the command is not specified, Boost.Build will search for
-          a binary named <span><strong class="command">dmc</strong></span> in
+          a binary named <span class="command"><strong>dmc</strong></span> in
           <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -550,7 +550,7 @@ using dmc : [<span class="optional"><em class="replaceable"><code>version</code>
       passed to the linker.</p></dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.hp_cxx"></a>HP C++ Compiler for Tru64 Unix</h4></div></div></div>
 <p>The <code class="computeroutput">hp_cxx</code> modules supports the
@@ -561,9 +561,9 @@ using dmc : [<span class="optional"><em class="replaceable"><code>version</code>
 using hp_cxx : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>If the command is not specified, Boost.Build will search for
-          a binary named <span><strong class="command">hp_cxx</strong></span> in <code class="envar">PATH</code>.</p>
+          a binary named <span class="command"><strong>hp_cxx</strong></span> in <code class="envar">PATH</code>.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -578,7 +578,7 @@ using hp_cxx : [<span class="optional"><em class="replaceable"><code>version</co
       passed to the linker.</p></dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.sun"></a>Sun Studio</h4></div></div></div>
 <p>The <code class="computeroutput">sun</code> module supports the
@@ -589,7 +589,7 @@ using hp_cxx : [<span class="optional"><em class="replaceable"><code>version</co
 using sun : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>c++-compile-command</code></em></span>] : [<span class="optional"><em class="replaceable"><code>compiler options</code></em></span>] ;</pre>
 <p>This statement may be repeated several times, if you want to configure several versions of the compiler.</p>
 <p>If the command is not specified, Boost.Build will search for
-          a binary named <span><strong class="command">CC</strong></span>
+          a binary named <span class="command"><strong>CC</strong></span>
           in <code class="filename">/opt/SUNWspro/bin</code> and in
           <code class="envar">PATH</code>.</p>
 <p>When using this compiler on complex C++ code, such as the
@@ -603,7 +603,7 @@ using sun : [<span class="optional"><em class="replaceable"><code>version</code>
 <p> See the <a href="http://blogs.sun.com/sga/entry/command_line_options" target="_top">
           Sun C++ Frontend Tales</a> for details.</p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">cflags</code></span></dt>
 <dd><p>Specifies additional compiler flags that will be used when
       compiling C sources.</p></dd>
@@ -617,12 +617,12 @@ using sun : [<span class="optional"><em class="replaceable"><code>version</code>
 <dd><p>Specifies additional command line options that will be
       passed to the linker.</p></dd>
 </dl></div>
-<a class="indexterm" name="idp3756272"></a>
+<a class="indexterm" name="idp88006000"></a>
           Starting with Sun Studio 12, you can create 64-bit applications
           by using the <code class="computeroutput">address-model=64</code> property.
 
         </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.compiler.vacpp"></a>IBM Visual Age</h4></div></div></div>
 <p>The <code class="computeroutput">vacpp</code> module supports the
@@ -640,19 +640,19 @@ using vacpp ;</pre>
           were not tested with the the <code class="computeroutput">vacpp</code> module.</p>
 </div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp3761616"></a>Third-party libraries</h3></div></div></div>
-<div class="toc"><dl>
+<a name="idp88015840"></a>Third-party libraries</h3></div></div></div>
+<div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.libraries.stlport">STLport library</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.libraries.zlib">zlib</a></span></dt>
 </dl></div>
 <p>Boost.Build provides special support for some
         third-party C++ libraries, documented below.</p>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.libraries.stlport"></a>STLport library</h4></div></div></div>
-<a class="indexterm" name="idp3762888"></a><p>The <a href="http://stlport.org" target="_top">STLport</a> library
+<a class="indexterm" name="idp88018192"></a><p>The <a href="http://stlport.org" target="_top">STLport</a> library
           is an alternative implementation of C++ runtime library. Boost.Build
           supports using that library on Windows platfrom.  Linux is
           hampered by different naming of libraries in each STLport
@@ -678,10 +678,10 @@ using stlport : [<span class="optional"><em class="replaceable"><code>version</c
           requesting <code class="literal">stdlib=stlport</code> on the command line.
           </p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.libraries.zlib"></a>zlib</h4></div></div></div>
-<a class="indexterm" name="idp3769072"></a><p>Provides support for the
+<a class="indexterm" name="idp88029200"></a><p>Provides support for the
           <a href="http://www.zlib.net" target="_top">zlib</a> library.  zlib
           can be configured either to use precompiled binaries or to
           build the library from source.</p>
@@ -690,7 +690,7 @@ using stlport : [<span class="optional"><em class="replaceable"><code>version</c
 using zlib : [<span class="optional"><em class="replaceable"><code>version</code></em></span>] : [<span class="optional"><em class="replaceable"><code>options</code></em></span>] : [<span class="optional"><em class="replaceable"><code>condition</code></em></span>] : [<span class="optional"><em class="replaceable"><code>is-default</code></em></span>] ;
           </pre>
 <p>Options for using a prebuilt library:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">search</code></span></dt>
 <dd><p>The directory containing the zlib binaries.</p></dd>
 <dt><span class="term"><code class="literal">name</code></span></dt>
@@ -702,12 +702,12 @@ using zlib : [<span class="optional"><em class="replaceable"><code>version</code
           variables ZLIB_LIBRARY_PATH, ZLIB_NAME, and ZLIB_INCLUDE will be
           used instead.</p>
 <p>Options for building zlib from source:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">source</code></span></dt>
 <dd><p>The zlib source directory.  Defaults to the
                 environmental variable ZLIB_SOURCE.</p></dd>
 <dt><span class="term"><code class="literal">tag</code></span></dt>
-<dd><p>Sets the <a href="../overview/builtins/features.html#bbv2.builtin.features.tag">tag</a>
+<dd><p>Sets the <a class="link" href="../overview/builtins/features.html#bbv2.builtin.features.tag">tag</a>
                 property to adjust the file name of the library.  Ignored
                 when using precompiled binaries.</p></dd>
 <dt><span class="term"><code class="literal">build-name</code></span></dt>
@@ -729,10 +729,10 @@ using zlib : 1.2.7 : : &lt;toolset&gt;gcc ;
 </pre>
 </div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp3781264"></a>Documentation tools</h3></div></div></div>
-<div class="toc"><dl>
+<a name="idp88052272"></a>Documentation tools</h3></div></div></div>
+<div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.doc.xsltproc">xsltproc</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.doc.boostbook">boostbook</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.doc.doxygen">doxygen</a></span></dt>
@@ -742,10 +742,10 @@ using zlib : 1.2.7 : : &lt;toolset&gt;gcc ;
 <p>Boost.Build support for the Boost documentation tools is
         documented below.
         </p>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.xsltproc"></a>xsltproc</h4></div></div></div>
-<a class="indexterm" name="idp3782512"></a><p>To use xsltproc, you first need to configure it using the following syntax:</p>
+<a class="indexterm" name="idp88054576"></a><p>To use xsltproc, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
 using xsltproc : [<span class="optional"><em class="replaceable"><code>xsltproc</code></em></span>] ;
 </pre>
@@ -756,7 +756,7 @@ using xsltproc : [<span class="optional"><em class="replaceable"><code>xsltproc<
           Otherwise, xsltproc will be searched for in PATH.
           </p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">xsl:param</code></span></dt>
 <dd><p>Values should have the form
                 <em class="replaceable"><code>name</code></em>=<em class="replaceable"><code>value</code></em></p></dd>
@@ -769,7 +769,7 @@ using xsltproc : [<span class="optional"><em class="replaceable"><code>xsltproc<
           these operate on jam targets and are intended to be used by another
           toolset, such as boostbook, rather than directly by users.
           </p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">xslt</code></span></dt>
 <dd>
 <pre class="programlisting">
@@ -790,10 +790,10 @@ rule xslt-dir ( target : source stylesheet : properties * : dirname )
 </dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.boostbook"></a>boostbook</h4></div></div></div>
-<a class="indexterm" name="idp3796352"></a><p>To use boostbook, you first need to configure it using the following syntax:</p>
+<a class="indexterm" name="idp88080912"></a><p>To use boostbook, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
 using boostbook : [<span class="optional"><em class="replaceable"><code>docbook-xsl-dir</code></em></span>] : [<span class="optional"><em class="replaceable"><code>docbook-dtd-dir</code></em></span>] : [<span class="optional"><em class="replaceable"><code>boostbook-dir</code></em></span>] ;
 </pre>
@@ -817,7 +817,7 @@ using boostbook : [<span class="optional"><em class="replaceable"><code>docbook-
           it also depends on fop.
           </p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">format</code></span></dt>
 <dd>
 <p>
@@ -834,7 +834,7 @@ using boostbook : [<span class="optional"><em class="replaceable"><code>docbook-
 </dl></div>
 <p>The boostbook module defines a rule for creating a target
           following the common syntax.</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">boostbook</code></span></dt>
 <dd>
 <pre class="programlisting">
@@ -844,10 +844,10 @@ rule boostbook ( target-name : sources * : requirements * : default-build * )
 </dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.doxygen"></a>doxygen</h4></div></div></div>
-<a class="indexterm" name="idp3815016"></a><p>To use doxygen, you first need to configure it using the following syntax:</p>
+<a class="indexterm" name="idp88116736"></a><p>To use doxygen, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
 using doxygen : [<span class="optional"><em class="replaceable"><code>name</code></em></span>] ;
 </pre>
@@ -859,7 +859,7 @@ using doxygen : [<span class="optional"><em class="replaceable"><code>name</code
           generating BoostBook XML.
           </p>
 <p>The following options can be provided, using <code class="literal">&lt;<em class="replaceable"><code>option-name</code></em>&gt;<em class="replaceable"><code>option-value</code></em></code> syntax:</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">doxygen:param</code></span></dt>
 <dd><p>All the values of <code class="literal">doxygen:param</code>
                  are added to the doxyfile.</p></dd>
@@ -878,7 +878,7 @@ using doxygen : [<span class="optional"><em class="replaceable"><code>name</code
                 from LaTex formulae.</p>
 <div class="warning"><table border="0" summary="Warning">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../doc/html/images/warning.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../images/warning.png"></td>
 <th align="left">Warning</th>
 </tr>
 <tr><td align="left" valign="top"><p>The path is interpreted relative to the
@@ -890,7 +890,7 @@ using doxygen : [<span class="optional"><em class="replaceable"><code>name</code
 </dl></div>
 <p>The doxygen module defines a rule for creating a target
           following the common syntax.</p>
-<div class="variablelist"><dl>
+<div class="variablelist"><dl class="variablelist">
 <dt><span class="term"><code class="literal">doxygen</code></span></dt>
 <dd>
 <pre class="programlisting">
@@ -903,10 +903,10 @@ rule doxygen ( target : sources * : requirements * : default-build * : usage-req
 </dd>
 </dl></div>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.quickbook"></a>quickbook</h4></div></div></div>
-<a class="indexterm" name="idp3828768"></a><p>The quickbook module provides a generator to convert from
+<a class="indexterm" name="idp88142624"></a><p>The quickbook module provides a generator to convert from
           Quickbook to BoostBook XML.</p>
 <p>To use quickbook, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
@@ -919,10 +919,10 @@ using quickbook : [<span class="optional"><em class="replaceable"><code>command<
           executable in PATH.
           </p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.fop"></a>fop</h4></div></div></div>
-<a class="indexterm" name="idp3831768"></a><p>The fop module provides generators to convert from
+<a class="indexterm" name="idp88147952"></a><p>The fop module provides generators to convert from
           XSL formatting objects to Postscript and PDF.</p>
 <p>To use fop, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
@@ -943,7 +943,7 @@ using fop : [<span class="optional"><em class="replaceable"><code>fop-command</c
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
+<td align="right"><div class="copyright-footer">Copyright &#169; 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
       <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -951,7 +951,7 @@ using fop : [<span class="optional"><em class="replaceable"><code>fop-command</c
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../overview/builtins/features.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="modules.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../overview/builtins/features.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="modules.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

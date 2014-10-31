@@ -1,27 +1,27 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>The Build Process</title>
-<link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.69.1">
-<link rel="start" href="../../index.html" title="Boost.Build V2 User Manual">
-<link rel="up" href="../overview.html" title="Chapter 4. Overview">
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="../../index.html" title="Boost.Build V2 User Manual">
+<link rel="up" href="../overview.html" title="Chapter&#160;4.&#160;Overview">
 <link rel="prev" href="projects.html" title="Projects">
-<link rel="next" href="../tasks.html" title="Chapter 5. Common tasks">
+<link rel="next" href="../tasks.html" title="Chapter&#160;5.&#160;Common tasks">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="projects.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../tasks.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="projects.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../tasks.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="bbv2.overview.build_process"></a>The Build Process</h2></div></div></div>
-<div class="toc"><dl>
+<div class="toc"><dl class="toc">
 <dt><span class="section"><a href="build_process.html#bbv2.overview.build_request">Build Request</a></span></dt>
-<dt><span class="section"><a href="build_process.html#idp3332056">Building a main target</a></span></dt>
-<dt><span class="section"><a href="build_process.html#idp3339040">Building a Project</a></span></dt>
+<dt><span class="section"><a href="build_process.html#idp87238240">Building a main target</a></span></dt>
+<dt><span class="section"><a href="build_process.html#idp87248960">Building a Project</a></span></dt>
 </dl></div>
 <p>When you've described your targets, you want Boost.Build to run the
       right tools and create the needed targets.
@@ -42,7 +42,7 @@
     </p>
 <div class="tip"><table border="0" summary="Tip">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../../../../doc/html/images/tip.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../../../images/tip.png"></td>
 <th align="left">Tip</th>
 </tr>
 <tr><td align="left" valign="top"><p>
@@ -51,7 +51,7 @@
         user, and each target can be built with different properties.
       </p></td></tr>
 </table></div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="bbv2.overview.build_request"></a>Build Request</h3></div></div></div>
 <p>
@@ -64,7 +64,7 @@ b2 app1 lib1//lib1 toolset=gcc variant=debug optimization=full
 <p>
         would build two targets, "app1" and "lib1//lib1" with the specified
         properties. You can refer to any targets, using
-        <a href="../reference/definitions.html#bbv2.reference.ids" title="Target identifiers and references">target id</a> and specify arbitrary
+        <a class="link" href="../reference/definitions.html#bbv2.reference.ids" title="Target identifiers and references">target id</a> and specify arbitrary
         properties. Some of the properties are very common, and for them the name
         of the property can be omitted. For example, the above can be written as:
 </p>
@@ -73,44 +73,44 @@ b2 app1 lib1//lib1 gcc debug optimization=full
 </pre>
 <p>
         The complete syntax, which has some additional shortcuts, is
-        described in <a href="invocation.html" title="Invocation">the section called &#8220;Invocation&#8221;</a>.
+        described in <a class="xref" href="invocation.html" title="Invocation">the section called &#8220;Invocation&#8221;</a>.
       </p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp3332056"></a>Building a main target</h3></div></div></div>
+<a name="idp87238240"></a>Building a main target</h3></div></div></div>
 <p>When you request, directly or indirectly, a build of a main target
         with specific requirements, the following steps are done. Some brief
-        explanation is provided, and more details are given in <a href="../reference/buildprocess.html" title="Build process">the section called &#8220;Build process&#8221;</a>.
+        explanation is provided, and more details are given in <a class="xref" href="../reference/buildprocess.html" title="Build process">the section called &#8220;Build process&#8221;</a>.
         </p>
-<div class="orderedlist"><ol type="1">
-<li><p>Applying default build. If the default-build
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><p>Applying default build. If the default-build
           property of a target specifies a value of a feature that is not
           present in the build request, that value is added.</p></li>
-<li><p>Selecting the main target alternative to use. For
+<li class="listitem"><p>Selecting the main target alternative to use. For
               each alternative we look how many properties are present both in
               alternative's requirements, and in build request. The
               alternative with large number of matching properties is selected.
             </p></li>
-<li><p>Determining "common" properties.
+<li class="listitem"><p>Determining "common" properties.
           
               The build request
-              is <a href="../reference/definitions.html#bbv2.reference.variants.proprefine" title="Property refinement">refined</a>
+              is <a class="link" href="../reference/definitions.html#bbv2.reference.variants.proprefine" title="Property refinement">refined</a>
               with target's requirements.
               
               The conditional properties in
               requirements are handled as well. Finally, default values of
               features are added.
             </p></li>
-<li><p>Building targets referred by the sources list and
+<li class="listitem"><p>Building targets referred by the sources list and
               dependency properties. The list of sources and the properties
-              can refer to other target using <a href="../reference/definitions.html#bbv2.reference.ids" title="Target identifiers and references">target references</a>. For each
-              reference, we take all <a href="../reference/definitions.html#bbv2.reference.features.attributes.propagated">propagated</a>
+              can refer to other target using <a class="link" href="../reference/definitions.html#bbv2.reference.ids" title="Target identifiers and references">target references</a>. For each
+              reference, we take all <a class="link" href="../reference/definitions.html#bbv2.reference.features.attributes.propagated">propagated</a>
               properties, refine them by explicit properties specified in the
               target reference, and pass the resulting properties as build
               request to the other target.
             </p></li>
-<li><p>Adding the usage requirements produced when building
+<li class="listitem"><p>Adding the usage requirements produced when building
               dependencies to the "common" properties. When dependencies are
               built in the previous step, they return
               
@@ -119,7 +119,7 @@ b2 app1 lib1//lib1 gcc debug optimization=full
               are added to the common properties and the resulting property
               set will be used for building the current target.
             </p></li>
-<li><p>Building the target using generators. To convert the
+<li class="listitem"><p>Building the target using generators. To convert the
               sources to the desired type, Boost.Build uses "generators" ---
               objects that correspond to tools like compilers and linkers. Each
               generator declares what type of targets it can produce and what
@@ -128,7 +128,7 @@ b2 app1 lib1//lib1 gcc debug optimization=full
               target from specific sources. When generators are run, they return
               the "real" targets.
             </p></li>
-<li><p>Computing the usage requirements to be returned. The
+<li class="listitem"><p>Computing the usage requirements to be returned. The
           conditional properties in usage requirements are expanded
           
           and the result is returned.</p></li>
@@ -136,11 +136,11 @@ b2 app1 lib1//lib1 gcc debug optimization=full
 <p>
       </p>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp3339040"></a>Building a Project</h3></div></div></div>
+<a name="idp87248960"></a>Building a Project</h3></div></div></div>
 <p>Often, a user builds a complete project, not just one main
-      target. In fact, invoking <span><strong class="command">b2</strong></span> without
+      target. In fact, invoking <span class="command"><strong>b2</strong></span> without
       arguments
       
       builds the project defined in the current
@@ -167,7 +167,7 @@ explicit hello_test ;
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
+<td align="right"><div class="copyright-footer">Copyright &#169; 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
       <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -175,7 +175,7 @@ explicit hello_test ;
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="projects.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="../tasks.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="projects.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../tasks.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

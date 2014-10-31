@@ -1,11 +1,11 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Configuration</title>
-<link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.69.1">
-<link rel="start" href="../../index.html" title="Boost.Build V2 User Manual">
-<link rel="up" href="../overview.html" title="Chapter 4. Overview">
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="../../index.html" title="Boost.Build V2 User Manual">
+<link rel="up" href="../overview.html" title="Chapter&#160;4.&#160;Overview">
 <link rel="prev" href="jam_language.html" title="Boost.Jam Language">
 <link rel="next" href="invocation.html" title="Invocation">
 </head>
@@ -13,9 +13,9 @@
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="jam_language.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="invocation.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="jam_language.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="invocation.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="bbv2.overview.configuration"></a>Configuration</h2></div></div></div>
 <p>
@@ -28,15 +28,15 @@
       are searched.
     </p>
 <div class="table">
-<a name="bbv2.reference.init.config"></a><p class="title"><b>Table 4.1. Search paths for configuration files</b></p>
-<table class="table" summary="Search paths for configuration files">
+<a name="bbv2.reference.init.config"></a><p class="title"><b>Table&#160;4.1.&#160;Search paths for configuration files</b></p>
+<div class="table-contents"><table class="table" summary="Search paths for configuration files">
 <colgroup>
 <col>
 <col>
 <col>
 </colgroup>
 <thead><tr>
-<th> </th>
+<th>&#160;</th>
 <th>site-config.jam</th>
 <th>user-config.jam</th>
 </tr></thead>
@@ -68,21 +68,21 @@
             </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
-<div class="tip"><table border="0" summary="Tip">
+<br class="table-break"><div class="tip"><table border="0" summary="Tip">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../../../../doc/html/images/tip.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../../../images/tip.png"></td>
 <th align="left">Tip</th>
 </tr>
 <tr><td align="left" valign="top"><p>
-        You can use the <span><strong class="command">--debug-configuration</strong></span> option to
+        You can use the <span class="command"><strong>--debug-configuration</strong></span> option to
         find which configuration files are actually loaded.
       </p></td></tr>
 </table></div>
 <p>
       Usually, <code class="filename">user-config.jam</code> just defines the available compilers
-      and other tools (see <a href="../recipies/site-config.html" title="Targets in site-config.jam">the section called &#8220;Targets in site-config.jam&#8221;</a> for more advanced
+      and other tools (see <a class="xref" href="../recipies/site-config.html" title="Targets in site-config.jam">the section called &#8220;Targets in site-config.jam&#8221;</a> for more advanced
       usage). A tool is configured using the following syntax:
     </p>
 <pre class="programlisting">
@@ -98,7 +98,7 @@ using gcc ;
 <p> will make the <a href="http://gcc.gnu.org" target="_top">GCC</a> compiler available.
     </p>
 <p>
-      All the supported tools are documented in <a href="../reference/tools.html" title="Builtin tools">the section called &#8220;Builtin tools&#8221;</a>,
+      All the supported tools are documented in <a class="xref" href="../reference/tools.html" title="Builtin tools">the section called &#8220;Builtin tools&#8221;</a>,
       including the specific options they take. Some general notes that apply to most
       C++ compilers are below.
     </p>
@@ -109,12 +109,12 @@ using gcc ;
     </p>
 <p>If you have a single compiler, and the compiler executable
       </p>
-<div class="itemizedlist"><ul type="disc">
-<li><p>has its &#8220;usual name&#8221; and is in the
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>has its &#8220;usual name&#8221; and is in the
       <code class="envar">PATH</code>, or</p></li>
-<li><p>was installed in a standard &#8220;installation
+<li class="listitem"><p>was installed in a standard &#8220;installation
       directory&#8221;, or</p></li>
-<li><p>can be found using a global system like the Windows
+<li class="listitem"><p>can be found using a global system like the Windows
       registry.</p></li>
 </ul></div>
 <p>
@@ -167,7 +167,7 @@ using gcc : 3.2 : g++-3.2 ;
       compiler, values of the <code class="varname">cxxflags</code> feature are
       passed directly to the C++ compiler, and values of the
       <code class="varname">compileflags</code> feature are passed to both. For
-      example, to configure a <span><strong class="command">gcc</strong></span> toolset so that it
+      example, to configure a <span class="command"><strong>gcc</strong></span> toolset so that it
       always generates 64-bit code you could write:
 </p>
 <pre class="programlisting">
@@ -177,7 +177,7 @@ using gcc : 3.2 : g++-3.2 ;
     </p>
 <div class="warning"><table border="0" summary="Warning">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../doc/html/images/warning.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../images/warning.png"></td>
 <th align="left">Warning</th>
 </tr>
 <tr><td align="left" valign="top"><p>
@@ -190,7 +190,7 @@ using gcc : 3.2 : g++-3.2 ;
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
+<td align="right"><div class="copyright-footer">Copyright &#169; 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
       <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -198,7 +198,7 @@ using gcc : 3.2 : g++-3.2 ;
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="jam_language.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="invocation.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="jam_language.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="invocation.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

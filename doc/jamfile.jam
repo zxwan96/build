@@ -15,6 +15,8 @@ boostbook userman : src/standalone.xml
      <implicit-dependency>jam_docs
      <dependency>jam_docs
      <xsl:param>boost.root=../..
+     <xsl:param>boost.graphics.root=../images/
+     <xsl:param>html.stylesheet=../boostbook.css
      <xsl:param>boost.defaults=Boost
    ;
    

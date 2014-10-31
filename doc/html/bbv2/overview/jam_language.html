@@ -1,40 +1,40 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Boost.Jam Language</title>
-<link rel="stylesheet" href="../../boostbook.css" type="text/css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.69.1">
-<link rel="start" href="../../index.html" title="Boost.Build V2 User Manual">
-<link rel="up" href="../overview.html" title="Chapter 4. Overview">
-<link rel="prev" href="../overview.html" title="Chapter 4. Overview">
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="../../index.html" title="Boost.Build V2 User Manual">
+<link rel="up" href="../overview.html" title="Chapter&#160;4.&#160;Overview">
+<link rel="prev" href="../overview.html" title="Chapter&#160;4.&#160;Overview">
 <link rel="next" href="configuration.html" title="Configuration">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../overview.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="configuration.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../overview.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="configuration.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-<div class="section" lang="en">
+<div class="section">
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="bbv2.overview.jam_language"></a>Boost.Jam Language</h2></div></div></div>
 <p>
         This section will describe the basics of the Boost.Jam language&#8212;just
         enough for writing Jamfiles. For more information, please see the
-        <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a> documentation.
+        <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> documentation.
       </p>
 <p>
-        <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a> has an interpreted, procedural
-        language. On the lowest level, a <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam
-        </a> program consists of variables and <a class="indexterm" name="idp3154384"></a> <em class="firstterm">rules</em> (the Jam term for
+        <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> has an interpreted, procedural
+        language. On the lowest level, a <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam
+        </a> program consists of variables and <a class="indexterm" name="idp86928512"></a> <em class="firstterm">rules</em> (the Jam term for
         functions). They are grouped into modules&#8212;there is one global
-        module and a number of named modules. Besides that, a <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a> program contains classes and class
+        module and a number of named modules. Besides that, a <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> program contains classes and class
         instances.
       </p>
 <p>
-        Syntantically, a <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a> program
+        Syntantically, a <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> program
         consists of two kind of elements&#8212;keywords (which have a special
-        meaning to <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a>) and literals.
+        meaning to <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a>) and literals.
         Consider this code:
 </p>
 <pre class="programlisting">
@@ -48,7 +48,7 @@ a = b ;
         </p>
 <div class="warning"><table border="0" summary="Warning">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../doc/html/images/warning.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../images/warning.png"></td>
 <th align="left">Warning</th>
 </tr>
 <tr><td align="left" valign="top"><p>
@@ -67,7 +67,7 @@ a = "=" ;
 <p>
       </p>
 <p>
-        All variables in <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a> have the same
+        All variables in <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> have the same
         type&#8212;list of strings. To define a variable one assigns a value to
         it, like in the previous example. An undefined variable is the same as a
         variable with an empty value. Variables can be accessed using the
@@ -101,7 +101,7 @@ rule <em class="replaceable"><code>example</code></em>
         arbitrarily long, but the third argument may not be empty.
       </p>
 <p>
-        The overview of <a href="../jam.html" title="Appendix A. Boost.Jam Documentation">Boost.Jam</a> language
+        The overview of <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> language
         statements is given below:
 </p>
 <pre class="programlisting">
@@ -119,11 +119,11 @@ if cond { statements } [ else { statements } ]
 <p>
         This is a regular if-statement. The condition is composed of:
         </p>
-<div class="itemizedlist"><ul type="disc">
-<li><p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>
               Literals (true if at least one string is not empty)
             </p></li>
-<li><p>
+<li class="listitem"><p>
               Comparisons: <code class="computeroutput">a <em class="replaceable"><code>operator</code></em> b</code>
               where <em class="replaceable"><code>operator</code></em> is one of
               <code class="computeroutput">=</code>, <code class="computeroutput">!=</code>, <code class="computeroutput">&lt;</code>,
@@ -131,11 +131,11 @@ if cond { statements } [ else { statements } ]
               comparison is done pairwise between each string in the left and
               the right arguments.
             </p></li>
-<li><p>
+<li class="listitem"><p>
               Logical operations: <code class="computeroutput">! a</code>, <code class="computeroutput">a &amp;&amp; b</code>,
               <code class="computeroutput">a || b</code>
             </p></li>
-<li><p>
+<li class="listitem"><p>
               Grouping: <code class="computeroutput">( cond )</code>
             </p></li>
 </ul></div>
@@ -163,7 +163,7 @@ return values ;
         </p>
 <div class="warning"><table border="0" summary="Warning">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../doc/html/images/warning.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../images/warning.png"></td>
 <th align="left">Warning</th>
 </tr>
 <tr><td align="left" valign="top">
@@ -245,12 +245,12 @@ actions create-file-from-another
         two unrelated actions would be impossible.
       </p>
 <p>
-        More details can be found in the Jam reference, <a href="../../jam/language.html#jam.language.rules" title=" Rules">the section called &#8220; Rules&#8221;</a>.
+        More details can be found in the Jam reference, <a class="xref" href="../../jam/language.html#jam.language.rules" title="Rules">the section called &#8220;Rules&#8221;</a>.
       </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
+<td align="right"><div class="copyright-footer">Copyright &#169; 2006-2009, 2014 Vladimir Prus<p>Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
       <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -258,7 +258,7 @@ actions create-file-from-another
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="../overview.html"><img src="../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="configuration.html"><img src="../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="../overview.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="configuration.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>
