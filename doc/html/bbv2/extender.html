@@ -10,10 +10,10 @@
 <link rel="next" href="extender/example.html" title="Example: 1-to-1 generator">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
-<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../boost.png"></td></tr></table>
+<table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="reference/definitions.html"><img src="../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="extender/example.html"><img src="../../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="reference/definitions.html"><img src="../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="extender/example.html"><img src="../../../doc/html/images/next.png" alt="Next"></a>
 </div>
 <div class="chapter" lang="en">
 <div class="titlepage"><div><div><h2 class="title">
@@ -74,7 +74,7 @@
       </p>
 <div class="warning"><table border="0" summary="Warning">
 <tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../../../doc/html/images/warning.png"></td>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../doc/html/images/warning.png"></td>
 <th align="left">Warning</th>
 </tr>
 <tr><td align="left" valign="top"><p>All of the Boost.Jam target-related builtin functions, like
@@ -90,7 +90,7 @@
         and can be called with specific properties to generate concrete
         targets. At the code level it is represented by an instance of
         class derived from <a href="reference/class.html#bbv2.reference.class.abstract-target" title="Class abstract-target">abstract-target</a>. 
-        <sup>[<a name="idp4161496" href="#ftn.idp4161496">4</a>]</sup>
+        <sup>[<a name="idp4262648" href="#ftn.idp4262648">4</a>]</sup>
         </p>
 <p>The <a href="reference/class.html#bbv2.reference.class.abstract-target.generate">generate</a>
         method takes the build properties
@@ -182,7 +182,7 @@ local t = [ new file-target $(name) : CPP : $(project) : $(a) ] ;
         returning targets you should pass them via the <code class="computeroutput">virtual-target.register</code>
         function, besides allowing Boost.Build to track which virtual targets
         got created for each metatarget, this will also replace targets with previously created identical
-        ones, as necessary.<sup>[<a name="idp4185824" href="#ftn.idp4185824">5</a>]</sup>
+        ones, as necessary.<sup>[<a name="idp4286976" href="#ftn.idp4286976">5</a>]</sup>
         Here are a couple of examples:
 </p>
 <pre class="programlisting">
@@ -204,7 +204,7 @@ return [ sequence.transform virtual-target.register : $(targets) ] ;
 <p>In practice, most files have specific types, and most tools
         consume and produce files of specific type. To take advantage of this
         fact, Boost.Build defines concept of target type and
-        <a class="indexterm" name="idp4189760"></a>
+        <a class="indexterm" name="idp4290944"></a>
         <em class="firstterm">generators</em>, and has special metatarget class
         <a href="reference/class.html#bbv2.reference.class.typed-target" title="Class typed-target">typed-target</a>.  Target type is merely an
         identifier. It is associated with a set of file extensions that
@@ -222,9 +222,9 @@ return [ sequence.transform virtual-target.register : $(targets) ] ;
 </div>
 <div class="footnotes">
 <br><hr width="100" align="left">
-<div class="footnote"><p><sup>[<a name="ftn.idp4161496" href="#idp4161496">4</a>] </sup>This name is historic, and will be eventuall changed to 
+<div class="footnote"><p><sup>[<a name="ftn.idp4262648" href="#idp4262648">4</a>] </sup>This name is historic, and will be eventuall changed to 
         <code class="computeroutput">metatarget</code></p></div>
-<div class="footnote"><p><sup>[<a name="ftn.idp4185824" href="#idp4185824">5</a>] </sup>This create-then-register pattern is caused by limitations 
+<div class="footnote"><p><sup>[<a name="ftn.idp4286976" href="#idp4286976">5</a>] </sup>This create-then-register pattern is caused by limitations 
         of the Boost.Jam language. Python port is likely to never create duplicate targets.</p></div>
 </div>
 </div>
@@ -238,7 +238,7 @@ return [ sequence.transform virtual-target.register : $(targets) ] ;
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="reference/definitions.html"><img src="../../../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../../../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="extender/example.html"><img src="../../../../../doc/html/images/next.png" alt="Next"></a>
+<a accesskey="p" href="reference/definitions.html"><img src="../../../doc/html/images/prev.png" alt="Prev"></a><a accesskey="u" href="../index.html"><img src="../../../doc/html/images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../../doc/html/images/home.png" alt="Home"></a><a accesskey="n" href="extender/example.html"><img src="../../../doc/html/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>
