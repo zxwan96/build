@@ -20,8 +20,8 @@
 <a name="bbv2.reference.tools"></a>Builtin tools</h2></div></div></div>
 <div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.compilers">C++ Compilers</a></span></dt>
-<dt><span class="section"><a href="tools.html#idp88015840">Third-party libraries</a></span></dt>
-<dt><span class="section"><a href="tools.html#idp88052272">Documentation tools</a></span></dt>
+<dt><span class="section"><a href="tools.html#idp88486784">Third-party libraries</a></span></dt>
+<dt><span class="section"><a href="tools.html#idp88523136">Documentation tools</a></span></dt>
 </dl></div>
 <p>Boost.Build comes with support for a large number of C++ compilers,
       and other tools. This section documents how to use those tools.</p>
@@ -110,7 +110,7 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
                 be either <code class="computeroutput">windres</code> for msvc resource compiler,
                 or <code class="computeroutput">rc</code> for borland's resource compiler.</p></dd>
 </dl></div>
-<a class="indexterm" name="idp87739568"></a>
+<a class="indexterm" name="idp88222448"></a>
 
           In order to compile 64-bit applications, you have to specify
           <code class="computeroutput">address-model=64</code>, and the <code class="computeroutput">instruction-set</code>
@@ -127,7 +127,7 @@ using gcc : [<span class="optional"><em class="replaceable"><code>version</code>
           to that of the gcc module.
           </p>
 <p>
-          <a class="indexterm" name="idp87748448"></a>
+          <a class="indexterm" name="idp88230000"></a>
           The darwin toolset can generate so called "fat"
           binaries&#8212;binaries that can run support more than one
           architecture, or address mode. To build a binary that can run both
@@ -241,7 +241,7 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
 <div class="section">
 <div class="titlepage"><div><div><h5 class="title">
 <a name="v2.reference.tools.compiler.msvc.64"></a>64-bit support</h5></div></div></div>
-<a class="indexterm" name="idp87804288"></a><p>Starting with version 8.0, Microsoft Visual Studio can
+<a class="indexterm" name="idp88281296"></a><p>Starting with version 8.0, Microsoft Visual Studio can
             generate binaries for 64-bit processor, both 64-bit flavours of x86
             (codenamed AMD64/EM64T), and Itanium (codenamed IA64). In addition,
             compilers that are itself run in 64-bit mode, for better
@@ -288,7 +288,7 @@ using msvc : [<span class="optional"><em class="replaceable"><code>version</code
 <div class="section">
 <div class="titlepage"><div><div><h5 class="title">
 <a name="v2.reference.tools.compiler.msvc.winrt"></a>Windows Runtime support</h5></div></div></div>
-<a class="indexterm" name="idp87821168"></a><p>
+<a class="indexterm" name="idp88296240"></a><p>
             Starting with version 11.0, Microsoft Visual Studio can
             produce binaries for Windows Store and Phone in addition to 
             traditional Win32 desktop. To specify which Windows API set
@@ -617,7 +617,7 @@ using sun : [<span class="optional"><em class="replaceable"><code>version</code>
 <dd><p>Specifies additional command line options that will be
       passed to the linker.</p></dd>
 </dl></div>
-<a class="indexterm" name="idp88006000"></a>
+<a class="indexterm" name="idp88477008"></a>
           Starting with Sun Studio 12, you can create 64-bit applications
           by using the <code class="computeroutput">address-model=64</code> property.
 
@@ -642,7 +642,7 @@ using vacpp ;</pre>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp88015840"></a>Third-party libraries</h3></div></div></div>
+<a name="idp88486784"></a>Third-party libraries</h3></div></div></div>
 <div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.libraries.stlport">STLport library</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.libraries.zlib">zlib</a></span></dt>
@@ -652,7 +652,7 @@ using vacpp ;</pre>
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.libraries.stlport"></a>STLport library</h4></div></div></div>
-<a class="indexterm" name="idp88018192"></a><p>The <a href="http://stlport.org" target="_top">STLport</a> library
+<a class="indexterm" name="idp88489120"></a><p>The <a href="http://stlport.org" target="_top">STLport</a> library
           is an alternative implementation of C++ runtime library. Boost.Build
           supports using that library on Windows platfrom.  Linux is
           hampered by different naming of libraries in each STLport
@@ -681,7 +681,7 @@ using stlport : [<span class="optional"><em class="replaceable"><code>version</c
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.libraries.zlib"></a>zlib</h4></div></div></div>
-<a class="indexterm" name="idp88029200"></a><p>Provides support for the
+<a class="indexterm" name="idp88500128"></a><p>Provides support for the
           <a href="http://www.zlib.net" target="_top">zlib</a> library.  zlib
           can be configured either to use precompiled binaries or to
           build the library from source.</p>
@@ -731,7 +731,7 @@ using zlib : 1.2.7 : : &lt;toolset&gt;gcc ;
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp88052272"></a>Documentation tools</h3></div></div></div>
+<a name="idp88523136"></a>Documentation tools</h3></div></div></div>
 <div class="toc"><dl class="toc">
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.doc.xsltproc">xsltproc</a></span></dt>
 <dt><span class="section"><a href="tools.html#bbv2.reference.tools.doc.boostbook">boostbook</a></span></dt>
@@ -745,7 +745,7 @@ using zlib : 1.2.7 : : &lt;toolset&gt;gcc ;
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.xsltproc"></a>xsltproc</h4></div></div></div>
-<a class="indexterm" name="idp88054576"></a><p>To use xsltproc, you first need to configure it using the following syntax:</p>
+<a class="indexterm" name="idp88525440"></a><p>To use xsltproc, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
 using xsltproc : [<span class="optional"><em class="replaceable"><code>xsltproc</code></em></span>] ;
 </pre>
@@ -793,7 +793,7 @@ rule xslt-dir ( target : source stylesheet : properties * : dirname )
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.boostbook"></a>boostbook</h4></div></div></div>
-<a class="indexterm" name="idp88080912"></a><p>To use boostbook, you first need to configure it using the following syntax:</p>
+<a class="indexterm" name="idp88551680"></a><p>To use boostbook, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
 using boostbook : [<span class="optional"><em class="replaceable"><code>docbook-xsl-dir</code></em></span>] : [<span class="optional"><em class="replaceable"><code>docbook-dtd-dir</code></em></span>] : [<span class="optional"><em class="replaceable"><code>boostbook-dir</code></em></span>] ;
 </pre>
@@ -847,7 +847,7 @@ rule boostbook ( target-name : sources * : requirements * : default-build * )
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.doxygen"></a>doxygen</h4></div></div></div>
-<a class="indexterm" name="idp88116736"></a><p>To use doxygen, you first need to configure it using the following syntax:</p>
+<a class="indexterm" name="idp88587456"></a><p>To use doxygen, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
 using doxygen : [<span class="optional"><em class="replaceable"><code>name</code></em></span>] ;
 </pre>
@@ -906,7 +906,7 @@ rule doxygen ( target : sources * : requirements * : default-build * : usage-req
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.quickbook"></a>quickbook</h4></div></div></div>
-<a class="indexterm" name="idp88142624"></a><p>The quickbook module provides a generator to convert from
+<a class="indexterm" name="idp88613360"></a><p>The quickbook module provides a generator to convert from
           Quickbook to BoostBook XML.</p>
 <p>To use quickbook, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
@@ -922,7 +922,7 @@ using quickbook : [<span class="optional"><em class="replaceable"><code>command<
 <div class="section">
 <div class="titlepage"><div><div><h4 class="title">
 <a name="bbv2.reference.tools.doc.fop"></a>fop</h4></div></div></div>
-<a class="indexterm" name="idp88147952"></a><p>The fop module provides generators to convert from
+<a class="indexterm" name="idp88618784"></a><p>The fop module provides generators to convert from
           XSL formatting objects to Postscript and PDF.</p>
 <p>To use fop, you first need to configure it using the following syntax:</p>
 <pre class="programlisting">
@@ -953,5 +953,15 @@ using fop : [<span class="optional"><em class="replaceable"><code>fop-command</c
 <div class="spirit-nav">
 <a accesskey="p" href="../overview/builtins/features.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="modules.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2917240-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </body>
 </html>

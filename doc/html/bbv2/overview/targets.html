@@ -19,11 +19,11 @@
 <div class="titlepage"><div><div><h2 class="title" style="clear: both">
 <a name="bbv2.overview.targets"></a>Declaring Targets</h2></div></div></div>
 <div class="toc"><dl class="toc">
-<dt><span class="section"><a href="targets.html#idp87144640">Name</a></span></dt>
-<dt><span class="section"><a href="targets.html#idp87150000">Sources</a></span></dt>
+<dt><span class="section"><a href="targets.html#idp87642272">Name</a></span></dt>
+<dt><span class="section"><a href="targets.html#idp87647632">Sources</a></span></dt>
 <dt><span class="section"><a href="targets.html#bbv2.overview.targets.requirements">Requirements</a></span></dt>
-<dt><span class="section"><a href="targets.html#idp87182096">Default Build</a></span></dt>
-<dt><span class="section"><a href="targets.html#idp87184784">Additional Information</a></span></dt>
+<dt><span class="section"><a href="targets.html#idp87679728">Default Build</a></span></dt>
+<dt><span class="section"><a href="targets.html#idp87682416">Additional Information</a></span></dt>
 </dl></div>
 <p><a name="bbv2.overview.targets.main"></a>
         A <em class="firstterm">Main target</em> is a user-defined named
@@ -32,9 +32,9 @@
         target rules described in <a class="xref" href="../reference/rules.html" title="Builtin rules">the section called &#8220;Builtin rules&#8221;</a>.  The user can also declare
         custom main target rules as shown in <a class="xref" href="../extending/rules.html" title="Main target rules">the section called &#8220;Main target rules&#8221;</a>.
       </p>
-<a class="indexterm" name="idp87129328"></a><p>Most main target rules in Boost.Build have the same common
+<a class="indexterm" name="idp87626960"></a><p>Most main target rules in Boost.Build have the same common
       signature:</p>
-<a class="indexterm" name="idp87130816"></a><a name="bbv2.main-target-rule-syntax"></a><pre class="programlisting">
+<a class="indexterm" name="idp87628448"></a><a name="bbv2.main-target-rule-syntax"></a><pre class="programlisting">
 rule <em class="replaceable"><code>rule-name</code></em> (
      main-target-name :
      sources + :
@@ -82,7 +82,7 @@ rule <em class="replaceable"><code>rule-name</code></em> (
       </p>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp87144640"></a>Name</h3></div></div></div>
+<a name="idp87642272"></a>Name</h3></div></div></div>
 <p>The name of main target has two purposes. First, it's used to refer to this target from
         other targets and from command line. Second, it's used to compute the names of the generated files.
         Typically, filenames are obtained from main target name by appending system-dependent suffixes and
@@ -102,7 +102,7 @@ obj test.debug : test.cpp : &lt;variant&gt;debug ;
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp87150000"></a>Sources</h3></div></div></div>
+<a name="idp87647632"></a>Sources</h3></div></div></div>
 <p>The list of sources specifies what should be processed to
         get the resulting targets. Most of the time, it's just a list of
         files. Sometimes, you'll want to automatically construct the
@@ -149,7 +149,7 @@ exe c : c.cpp /boost/program_options//program_options ;
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="bbv2.overview.targets.requirements"></a>Requirements</h3></div></div></div>
-<a class="indexterm" name="idp87159984"></a><p>Requirements are the properties that should always be present when
+<a class="indexterm" name="idp87657616"></a><p>Requirements are the properties that should always be present when
         building a target. Typically, they are includes and defines:
 </p>
 <pre class="programlisting">
@@ -168,7 +168,7 @@ obj main : main.cpp : &lt;optimization&gt;off ;
 <p>
         </p>
 <p><a name="bbv2.overview.targets.requirements.conditional"></a>
-          <a class="indexterm" name="idp87164096"></a>
+          <a class="indexterm" name="idp87661728"></a>
           Sometimes, particular relationships need to be maintained
         among a target's build properties. This can be achieved with
         <em class="firstterm">conditional
@@ -200,7 +200,7 @@ lib network : network.cpp
 <p>
         </p>
 <p><a name="bbv2.overview.targets.requirements.indirect"></a>
-          <a class="indexterm" name="idp87172320"></a>
+          <a class="indexterm" name="idp87669952"></a>
           A more powerful variant of conditional requirements
           is <em class="firstterm">indirect conditional requirements</em>.
           You can provide a rule that will be called with the current build properties and can compute additional properties
@@ -257,7 +257,7 @@ exe test3 : test3.cpp : -&lt;threading&gt;multi ;
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp87182096"></a>Default Build</h3></div></div></div>
+<a name="idp87679728"></a>Default Build</h3></div></div></div>
 <p>The <code class="varname">default-build</code> parameter
         is a set of properties to be used if the build request does
         not otherwise specify a value for features in the set. For example:
@@ -274,7 +274,7 @@ exe hello : hello.cpp : : &lt;threading&gt;multi ;
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp87184784"></a>Additional Information</h3></div></div></div>
+<a name="idp87682416"></a>Additional Information</h3></div></div></div>
 <p>
           The ways a target is built can be so different that
           describing them using conditional requirements would be
@@ -330,5 +330,15 @@ explicit install_programs ;</pre>
 <div class="spirit-nav">
 <a accesskey="p" href="invocation.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="projects.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2917240-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </body>
 </html>
