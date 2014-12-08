@@ -139,29 +139,31 @@
             and <code class="literal">LOCATE</code> variables.
           </li>
 <li class="listitem">
+<p class="simpara">
             In addition to local and global variables, jam allows you to set a variable
             <code class="literal">on</code> a target. Target-specific variable values can usually
             not be read, and take effect only in the following contexts:
-            <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; ">
+          </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; ">
 <li class="listitem">
-                  In updating actions, variable values are first looked up <code class="literal">on</code>
-                  the target named by the first argument (the target being updated).
-                  Because Jam builds its entire dependency tree before executing
-                  actions, Jam rules make target-specific variable settings as a
-                  way of supplying parameters to the corresponding actions.
-                </li>
+                In updating actions, variable values are first looked up <code class="literal">on</code>
+                the target named by the first argument (the target being updated).
+                Because Jam builds its entire dependency tree before executing actions,
+                Jam rules make target-specific variable settings as a way of supplying
+                parameters to the corresponding actions.
+              </li>
 <li class="listitem">
-                  Binding is controlled <span class="emphasis"><em>entirely</em></span> by the target-specific
-                  setting of the <code class="literal">SEARCH</code> and <code class="literal">LOCATE</code>
-                  variables, as described here.
-                </li>
+                Binding is controlled <span class="emphasis"><em>entirely</em></span> by the target-specific
+                setting of the <code class="literal">SEARCH</code> and <code class="literal">LOCATE</code>
+                variables, as described here.
+              </li>
 <li class="listitem">
-                  In the special rule used for header file scanning, variable values
-                  are first looked up <code class="literal">on</code> the target named by the
-                  rule's first argument (the source file being scanned).
-                </li>
+                In the special rule used for header file scanning, variable values
+                are first looked up <code class="literal">on</code> the target named by the
+                rule's first argument (the source file being scanned).
+              </li>
 </ul></div>
-          </li>
+</li>
 <li class="listitem">
             The "bound value" of a variable is the path associated with
             the target named by the variable. In build actions, the first two arguments
@@ -178,6 +180,7 @@
             be titled "Modifying Update Determination".
           </li>
 <li class="listitem">
+<p class="simpara">
             "Grist" is just a string prefix of the form &lt;<span class="emphasis"><em>characters</em></span>&gt;.
             It is used in Jam to create unique target names based on simpler names.
             For example, the file name "<code class="literal">test.exe</code>" may
@@ -188,20 +191,21 @@
             to divide strings on grist boundaries, sometimes concatenating multiple
             gristed elements at the beginning of a string. Grist is used instead
             of identifying targets with absolute paths for two reasons:
-            <div class="orderedlist"><ol class="orderedlist" type="1">
+          </p>
+<div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-                  The location of targets cannot always be derived solely from what
-                  the user puts in a Jamfile, but sometimes depends also on the binding
-                  process. Some mechanism to distinctly identify targets with the
-                  same name is still needed.
-                </li>
+                The location of targets cannot always be derived solely from what
+                the user puts in a Jamfile, but sometimes depends also on the binding
+                process. Some mechanism to distinctly identify targets with the same
+                name is still needed.
+              </li>
 <li class="listitem">
-                  Grist allows us to use a uniform abstract identifier for each built
-                  target, regardless of target file location (as allowed by setting
-                  ALL_LOCATE_TARGET).
-                </li>
+                Grist allows us to use a uniform abstract identifier for each built
+                target, regardless of target file location (as allowed by setting
+                ALL_LOCATE_TARGET).
+              </li>
 </ol></div>
-          </li>
+</li>
 <li class="listitem">
             When grist is extracted from a name with $(var:G), the result includes
             the leading and trailing angle brackets. When grist is added to a name
@@ -222,7 +226,7 @@
             A variable whose value is an empty list or which consists entirely of
             empty strings has a negative logical value. Thus, for example, code like
             the following allows a sensible non-empty default which can easily be
-            overridden by the user:
+            overridden by the user: 
 <pre class="programlisting"><span class="identifier">MESSAGE</span> <span class="special">?\=</span> <span class="identifier">starting</span> <span class="identifier">jam</span><span class="special">...</span> <span class="special">;</span>
 <span class="keyword">if</span> <span class="error">$</span><span class="special">(</span><span class="identifier">MESSAGE</span><span class="special">)</span> <span class="special">{</span> <span class="identifier">ECHO</span> <span class="identifier">The</span> <span class="identifier">message</span> <span class="identifier">is</span><span class="special">:</span> <span class="error">$</span><span class="special">(</span><span class="identifier">MESSAGE</span><span class="special">)</span> <span class="special">;</span> <span class="special">}</span>
 </pre>
@@ -231,25 +235,29 @@
             and nothing at all is printed.
           </li>
 <li class="listitem">
+<p class="simpara">
             The parsing of command line options in Jam can be rather unintuitive,
             with regards to how other Unix programs accept options. There are two
             variants accepted as valid for an option:
-            <div class="orderedlist"><ol class="orderedlist" type="1">
+          </p>
+<div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-                  <code class="literal">-xvalue</code>, and
-                </li>
+                <code class="literal">-xvalue</code>, and
+              </li>
 <li class="listitem">
-                  <code class="literal">-x value</code>.
-                </li>
+                <code class="literal">-x value</code>.
+              </li>
 </ol></div>
-          </li>
+</li>
 </ul></div>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"></td>
-<td align="right"><div class="copyright-footer"></div></td>
-</tr></table>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="copyright-footer"><p class="copyright">
+      Copyright 2006, 2014 <a href="http://vladimirprus.com" target="_top">Vladimir
+      Prus</a>. Distributed under the Boost Software License, Version 1.0.
+      (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
+      <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+    </p></div>
 <hr>
 <div class="spirit-nav">
 <a accesskey="p" href="language.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../bbv2/jam.html"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="history.html"><img src="../../images/next.png" alt="Next"></a>

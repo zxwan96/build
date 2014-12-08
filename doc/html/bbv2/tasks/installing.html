@@ -23,7 +23,7 @@
       files.
     </p>
 <h3>
-<a name="idp96229104"></a>Basic install</h3>
+<a name="idp72627904"></a>Basic install</h3>
 <p>
       For installing a built target you should use the <code class="computeroutput">install</code>
       rule, which follows the <a class="link" href="../overview/targets.html#bbv2.main-target-rule-syntax">
@@ -62,7 +62,7 @@ install dist2 : hello helpers : &lt;location&gt;$(DIST) ;
       variables</a>
     </p>
 <h3>
-<a name="idp96239904"></a>Installing with all dependencies</h3>
+<a name="idp72638704"></a>Installing with all dependencies</h3>
 <p>
       Specifying the names of all libraries to install can be boring. The
       <code class="computeroutput">install</code> allows you to specify only the top-level executable
@@ -86,8 +86,8 @@ install dist : hello
       otherwise, all found target will be installed.
     </p>
 <h3>
-<a name="idp96244640"></a>Preserving Directory Hierarchy</h3>
-<a class="indexterm" name="idp96245024"></a><p>
+<a name="idp72643440"></a>Preserving Directory Hierarchy</h3>
+<a class="indexterm" name="idp72643824"></a><p>
       By default, the <code class="computeroutput">install</code> rule will strip paths from its
       sources. So, if sources include <code class="filename">a/b/c.hpp</code>, the
       <code class="filename">a/b</code> part will be ignored. To make the
@@ -111,7 +111,7 @@ install headers
       an entire directory tree.
     </p>
 <h3>
-<a name="idp96252208"></a>Installing into Several Directories</h3>
+<a name="idp72651008"></a>Installing into Several Directories</h3>
 <p>
       The <a class="link" href="alias.html" title="Alias"><code class="computeroutput">alias</code></a> rule can be
       used when targets need to be installed into several directories:
@@ -125,7 +125,7 @@ install install-lib : helper : /usr/lib ;
     </p>
 <p>
       Because the <code class="computeroutput">install</code> rule just copies targets, most free
-      features <a href="#ftn.idp96255712" class="footnote" name="idp96255712"><sup class="footnote">[3]</sup></a> have no
+      features <a href="#ftn.idp72654512" class="footnote" name="idp72654512"><sup class="footnote">[3]</sup></a> have no
       effect when used in requirements of the <code class="computeroutput">install</code> rule. The
       only two that matter are <a class="link" href="../overview/builtins/features.html#bbv2.builtin.features.dependency">
       <code class="varname">dependency</code></a> and, on Unix, <a class="link" href="../overview/builtins/features.html#bbv2.reference.features.dll-path"><code class="varname">dll-path</code>
@@ -143,13 +143,15 @@ install install-lib : helper : /usr/lib ;
 </div>
 <div class="footnotes">
 <br><hr style="width:100; text-align:left;margin-left: 0">
-<div id="ftn.idp96255712" class="footnote"><p><a href="#idp96255712" class="para"><sup class="para">[3] </sup></a>see the definition of "free" in <a class="xref" href="../reference/definitions.html#bbv2.reference.features.attributes" title="Feature Attributes">the section called &#8220;Feature Attributes&#8221;</a>.</p></div>
+<div id="ftn.idp72654512" class="footnote"><p><a href="#idp72654512" class="para"><sup class="para">[3] </sup></a>see the definition of "free" in <a class="xref" href="../reference/definitions.html#bbv2.reference.features.attributes" title="Feature Attributes">the section called &#8220;Feature Attributes&#8221;</a>.</p></div>
 </div>
 </div>
-<table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
-<td align="left"></td>
-<td align="right"><div class="copyright-footer"></div></td>
-</tr></table>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="copyright-footer"><p class="copyright">
+      Copyright 2006, 2014 <a href="http://vladimirprus.com" target="_top">Vladimir
+      Prus</a>. Distributed under the Boost Software License, Version 1.0.
+      (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
+      <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+    </p></div>
 <hr>
 <div class="spirit-nav">
 <a accesskey="p" href="alias.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tasks.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="../builtins/testing.html"><img src="../../../images/next.png" alt="Next"></a>
