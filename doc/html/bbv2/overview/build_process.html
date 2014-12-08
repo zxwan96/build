@@ -8,6 +8,7 @@
 <link rel="up" href="../overview.html" title="Chapter&#160;3.&#160;Overview">
 <link rel="prev" href="projects.html" title="Projects">
 <link rel="next" href="../tasks.html" title="Chapter&#160;4.&#160;Common tasks">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td></tr></table>
@@ -20,8 +21,8 @@
 <a name="bbv2.overview.build_process"></a>The Build Process</h2></div></div></div>
 <div class="toc"><dl class="toc">
 <dt><span class="section"><a href="build_process.html#bbv2.overview.build_request">Build Request</a></span></dt>
-<dt><span class="section"><a href="build_process.html#idp72539552">Building a main target</a></span></dt>
-<dt><span class="section"><a href="build_process.html#idp66914704">Building a Project</a></span></dt>
+<dt><span class="section"><a href="build_process.html#idp88056016">Building a main target</a></span></dt>
+<dt><span class="section"><a href="build_process.html#idp82486320">Building a Project</a></span></dt>
 </dl></div>
 <p>When you've described your targets, you want Boost.Build to run the
       right tools and create the needed targets.
@@ -75,7 +76,7 @@ b2 app1 lib1//lib1 gcc debug optimization=full
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp72539552"></a>Building a main target</h3></div></div></div>
+<a name="idp88056016"></a>Building a main target</h3></div></div></div>
 <p>When you request, directly or indirectly, a build of a main target
         with specific requirements, the following steps are done. Some brief
         explanation is provided, and more details are given in <a class="xref" href="../reference/buildprocess.html" title="Build process">the section called &#8220;Build process&#8221;</a>.
@@ -135,7 +136,7 @@ b2 app1 lib1//lib1 gcc debug optimization=full
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
-<a name="idp66914704"></a>Building a Project</h3></div></div></div>
+<a name="idp82486320"></a>Building a Project</h3></div></div></div>
 <p>Often, a user builds a complete project, not just one main
       target. In fact, invoking <span class="command"><strong>b2</strong></span> without
       arguments
@@ -162,7 +163,7 @@ explicit hello_test ;
       </p>
 </div>
 </div>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="copyright-footer"><p class="copyright">
+<div class="copyright-footer"><p class="copyright">
       Copyright 2006, 2014 <a href="http://vladimirprus.com" target="_top">Vladimir
       Prus</a>. Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 

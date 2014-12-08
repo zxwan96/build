@@ -8,6 +8,7 @@
 <link rel="up" href="../index.html" title="Boost.Build User Manual">
 <link rel="prev" href="reference/definitions.html" title="Definitions">
 <link rel="next" href="extender/example.html" title="Example: 1-to-1 generator">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../boost.png"></td></tr></table>
@@ -87,7 +88,7 @@
         and can be called with specific properties to generate concrete
         targets. At the code level it is represented by an instance of
         class derived from <a class="link" href="reference/class.html#bbv2.reference.class.abstract-target" title="Class abstract-target">abstract-target</a>. 
-        <a href="#ftn.idp74590016" class="footnote" name="idp74590016"><sup class="footnote">[4]</sup></a>
+        <a href="#ftn.idp90105360" class="footnote" name="idp90105360"><sup class="footnote">[4]</sup></a>
         </p>
 <p>The <a class="link" href="reference/class.html#bbv2.reference.class.abstract-target.generate">generate</a>
         method takes the build properties
@@ -179,7 +180,7 @@ local t = [ new file-target $(name) : CPP : $(project) : $(a) ] ;
         returning targets you should pass them via the <code class="computeroutput">virtual-target.register</code>
         function, besides allowing Boost.Build to track which virtual targets
         got created for each metatarget, this will also replace targets with previously created identical
-        ones, as necessary.<a href="#ftn.idp74632032" class="footnote" name="idp74632032"><sup class="footnote">[5]</sup></a>
+        ones, as necessary.<a href="#ftn.idp90147232" class="footnote" name="idp90147232"><sup class="footnote">[5]</sup></a>
         Here are a couple of examples:
 </p>
 <pre class="programlisting">
@@ -201,7 +202,7 @@ return [ sequence.transform virtual-target.register : $(targets) ] ;
 <p>In practice, most files have specific types, and most tools
         consume and produce files of specific type. To take advantage of this
         fact, Boost.Build defines concept of target type and
-        <a class="indexterm" name="idp74638864"></a>
+        <a class="indexterm" name="idp90154064"></a>
         <em class="firstterm">generators</em>, and has special metatarget class
         <a class="link" href="reference/class.html#bbv2.reference.class.typed-target" title="Class typed-target">typed-target</a>.  Target type is merely an
         identifier. It is associated with a set of file extensions that
@@ -219,13 +220,13 @@ return [ sequence.transform virtual-target.register : $(targets) ] ;
 </div>
 <div class="footnotes">
 <br><hr style="width:100; text-align:left;margin-left: 0">
-<div id="ftn.idp74590016" class="footnote"><p><a href="#idp74590016" class="para"><sup class="para">[4] </sup></a>This name is historic, and will be eventuall changed to 
+<div id="ftn.idp90105360" class="footnote"><p><a href="#idp90105360" class="para"><sup class="para">[4] </sup></a>This name is historic, and will be eventuall changed to 
         <code class="computeroutput">metatarget</code></p></div>
-<div id="ftn.idp74632032" class="footnote"><p><a href="#idp74632032" class="para"><sup class="para">[5] </sup></a>This create-then-register pattern is caused by limitations 
+<div id="ftn.idp90147232" class="footnote"><p><a href="#idp90147232" class="para"><sup class="para">[5] </sup></a>This create-then-register pattern is caused by limitations 
         of the Boost.Jam language. Python port is likely to never create duplicate targets.</p></div>
 </div>
 </div>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="copyright-footer"><p class="copyright">
+<div class="copyright-footer"><p class="copyright">
       Copyright 2006, 2014 <a href="http://vladimirprus.com" target="_top">Vladimir
       Prus</a>. Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 

@@ -8,6 +8,7 @@
 <link rel="up" href="../index.html" title="Boost.Build User Manual">
 <link rel="prev" href="tutorial/prebuilt.html" title="Prebuilt targets">
 <link rel="next" href="overview/jam_language.html" title="Boost.Jam Language">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../boost.png"></td></tr></table>
@@ -125,8 +126,8 @@ add_program ("a", "a.c")
       </p>
 <p>
         In order to support true multivariant builds, Boost.Build introduces the concept of a
-        <a class="indexterm" name="idp72212944"></a>
-        <a class="indexterm" name="idp72214208"></a>
+        <a class="indexterm" name="idp87729408"></a>
+        <a class="indexterm" name="idp87730672"></a>
         <em class="firstterm">metatarget</em>&#8212;an object that is created when the build description
         is parsed and can be called later with specific build properties to generate
         actual targets.
@@ -153,7 +154,7 @@ b2 toolset=gcc toolset=msvc
       </p>
 <p>
         Another key concept is
-        <a class="indexterm" name="idp72220016"></a>
+        <a class="indexterm" name="idp87736480"></a>
         <em class="firstterm">build property</em>. A build property is a variable
         that affects the build process. It can be specified on the command line, and is
         passed when calling a metatarget. While all build tools have a similar mechanism,
@@ -161,7 +162,7 @@ b2 toolset=gcc toolset=msvc
         and providing a large set of properties with portable semantics.
       </p>
 <p>
-        The final concept is <a class="indexterm" name="idp72222192"></a>
+        The final concept is <a class="indexterm" name="idp87738656"></a>
         <em class="firstterm">property propagation</em>. Boost.Build does not require that every
         metatarget is called with the same properties. Instead, the
         "top-level" metatargets are called with the properties specified on the command line.
@@ -176,7 +177,7 @@ b2 toolset=gcc toolset=msvc
       </p>
 </div>
 </div>
-<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="copyright-footer"><p class="copyright">
+<div class="copyright-footer"><p class="copyright">
       Copyright 2006, 2014 <a href="http://vladimirprus.com" target="_top">Vladimir
       Prus</a>. Distributed under the Boost Software License, Version 1.0.
       (See accompanying file <code class="filename">LICENSE_1_0.txt</code> or copy at 
