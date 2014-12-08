@@ -26,7 +26,7 @@
 <p>
         <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> has an interpreted, procedural
         language. On the lowest level, a <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam
-        </a> program consists of variables and <a class="indexterm" name="idp87733200"></a> <em class="firstterm">rules</em> (the Jam term for
+        </a> program consists of variables and <a class="indexterm" name="idp95831008"></a> <em class="firstterm">rules</em> (the Jam term for
         functions). They are grouped into modules&#8212;there is one global
         module and a number of named modules. Besides that, a <a class="link" href="../jam.html" title="Appendix&#160;A.&#160;Boost.Jam Documentation">Boost.Jam</a> program contains classes and class
         instances.
@@ -46,17 +46,14 @@ a = b ;
         keywords, while <code class="literal">a</code> and <code class="literal">b</code> are
         literals.
         </p>
-<div class="warning"><table border="0" summary="Warning">
-<tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../images/warning.png"></td>
-<th align="left">Warning</th>
-</tr>
-<tr><td align="left" valign="top"><p>
+<div class="warning">
+<h3 class="title">Warning</h3>
+<p>
             All syntax elements, even keywords, must be separated by spaces. For
             example, omitting the space character before <code class="literal">;</code>
             will lead to a syntax error.
-          </p></td></tr>
-</table></div>
+          </p>
+</div>
 <p>
         If you want to use a literal value that is the same as some keyword, the
         value can be quoted:
@@ -161,12 +158,8 @@ return values ;
         This statement should be used only inside a rule and assigns
         <code class="computeroutput">values</code> to the return value of the rule.
         </p>
-<div class="warning"><table border="0" summary="Warning">
-<tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="../../../images/warning.png"></td>
-<th align="left">Warning</th>
-</tr>
-<tr><td align="left" valign="top">
+<div class="warning">
+<h3 class="title">Warning</h3>
 <p>
             The <code class="computeroutput">return</code> statement does not exit the rule. For
             example:
@@ -185,8 +178,7 @@ rule test ( )
             will return <code class="literal">strange</code>, not
             <code class="literal">reasonable</code>.
           </p>
-</td></tr>
-</table></div>
+</div>
 <p>
 </p>
 <pre class="programlisting">
@@ -256,15 +248,5 @@ actions create-file-from-another
 <div class="spirit-nav">
 <a accesskey="p" href="../overview.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../overview.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="configuration.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-2917240-2', 'auto');
-      ga('send', 'pageview');
-
-    </script>
 </body>
 </html>

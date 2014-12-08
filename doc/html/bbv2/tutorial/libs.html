@@ -52,16 +52,13 @@ exe app <span class="special">:</span> app.cpp ../util/foo//bar <span class="spe
       a library <code class="filename">bar</code> declared in the Jamfile at
       <code class="filename">../util/foo</code>.
     </p>
-<div class="tip"><table border="0" summary="Tip">
-<tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../../../images/tip.png"></td>
-<th align="left">Tip</th>
-</tr>
-<tr><td align="left" valign="top"><p>Some other build system have special syntax for listing dependent
+<div class="tip">
+<h3 class="title">Tip</h3>
+<p>Some other build system have special syntax for listing dependent
       libraries, for example <code class="varname">LIBS</code> variable. In Boost.Build,
       you just add the library to the list of sources.
-      </p></td></tr>
-</table></div>
+      </p>
+</div>
 <p>Suppose we build <code class="filename">app</code> with:
     </p>
 <pre class="screen">
@@ -126,12 +123,8 @@ exe app : app.cpp /library-example/foo//bar ;</pre>
       Jamfiles are not allowed to assign the same project id to different
       directories.
     </p>
-<div class="tip"><table border="0" summary="Tip">
-<tr>
-<td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="../../../images/tip.png"></td>
-<th align="left">Tip</th>
-</tr>
-<tr><td align="left" valign="top">
+<div class="tip">
+<h3 class="title">Tip</h3>
 <p>If you want all applications in some project to link to a certain
         library, you can avoid having to specify it directly the sources of
         every target by using the <code class="varname">&lt;library&gt;</code> property.
@@ -144,8 +137,7 @@ exe app : app.cpp /library-example/foo//bar ;</pre>
 project
    <span class="special">:</span> requirements &lt;library&gt;/boost/filesystem//fs
    <span class="special">;</span></pre>
-</td></tr>
-</table></div>
+</div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
@@ -155,15 +147,5 @@ project
 <div class="spirit-nav">
 <a accesskey="p" href="hierarchy.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../tutorial.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="linkage.html"><img src="../../../images/next.png" alt="Next"></a>
 </div>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-2917240-2', 'auto');
-      ga('send', 'pageview');
-
-    </script>
 </body>
 </html>
