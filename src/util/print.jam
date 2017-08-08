@@ -20,7 +20,7 @@ import os ;
 # The current output target. Defaults to console.
 output-target = console ;
 
-# The current output type. Defaults to plain. Other possible values are "html".
+# The current output type. Defaults to plain. Other possible values are "html" and "qbk".
 output-type = plain ;
 
 # Whitespace.
@@ -42,7 +42,7 @@ if [ os.name ] = VMS
 #
 rule output (
     target  # The target file or device; file or "console".
-    type ?  # The type of output; "plain" or "html".
+    type ?  # The type of output; "plain", "html", or "qbk".
 )
 {
     type ?= plain ;
@@ -76,6 +76,7 @@ rule output (
 rule section (
     name  # The name of the section.
     description *  # A number of description lines.
+    : group ? # If given, will generate the start of a section group.
 )
 {
     if $(output-type) = plain
@@ -87,6 +88,18 @@ rule section (
     {
         name = [ escape-html $(name) ] ;
         text <h3>$(name)</h3> <p> ;
+    }
+    else if $(output-type) = qbk
+    {
+        if $(group)
+        {
+            text "[section $(name)]" ;
+        }
+        else
+        {
+            text "[heading $(name)]" ;
+        }
+        lines ;
     }
     local pre = ;
     while $(description)
@@ -112,6 +125,10 @@ rule section (
                 lines $(paragraph) ;
                 text </blockquote> ;
             }
+            else if $(output-type) = qbk
+            {
+                text "[:" $(paragraph) "]" ;
+            }
         }
         else
         {
@@ -134,6 +151,10 @@ rule section (
                     lines $(paragraph[2-]) ;
                     text </blockquote> ;
                 }
+                else if $(output-type) = qbk
+                {
+                    text "[:" $(paragraph[2-]) "]" ;
+                }
             }
             else
             {
@@ -154,6 +175,11 @@ rule section (
                     {
                         text </p> <p> [ escape-html $(paragraph) ] ;
                     }
+                    else if $(output-type) = qbk
+                    {
+                        lines $(paragraph) ;
+                        lines ;
+                    }
                 }
                 else
                 {
@@ -166,6 +192,11 @@ rule section (
                     {
                         text </p> <p> [ escape-html $(paragraph) ] ;
                     }
+                    else if $(output-type) = qbk
+                    {
+                        lines $(paragraph) ;
+                        lines ;
+                    }
                 }
             }
         }
@@ -173,6 +204,27 @@ rule section (
     if $(output-type) = html
     {
         text </p> ;
+    }
+}
+
+
+rule section-end (
+    group ? # If given, will generate the start of a section group.
+)
+{
+    if $(output-type) = plain
+    {
+    }
+    else if $(output-type) = html
+    {
+    }
+    else if $(output-type) = qbk
+    {
+        if $(group)
+        {
+            text "[endsect]" ;
+            lines ;
+        }
     }
 }
 
@@ -188,6 +240,9 @@ rule list-start ( )
     else if $(output-type) = html
     {
         text <ul> ;
+    }
+    else if $(output-type) = qbk
+    {
     }
 }
 
@@ -207,6 +262,10 @@ rule list-item (
     {
         text <li> [ escape-html $(item) ] </li> ;
     }
+    else if $(output-type) = qbk
+    {
+        lines [ split-at-words "*" $(item) ] : "  " "" ;
+    }
 }
 
 
@@ -222,6 +281,10 @@ rule list-end ( )
     else if $(output-type) = html
     {
         text </ul> ;
+    }
+    else if $(output-type) = qbk
+    {
+        lines ;
     }
 }
 
@@ -303,6 +366,14 @@ rule lines (
         }
         local html-text = [ escape-html $(text) : "&nbsp;" ] ;
         text $(html-text[1])<br> $(indent)$(html-text[2-])<br> ;
+    }
+    else if $(output-type) = plain
+    {
+        text $(outdent)$(text[1]) $(indent)$(text[2-]) ;
+    }
+    else if $(output-type) = qbk
+    {
+        text $(outdent)$(text[1]) $(indent)$(text[2-]) ;
     }
 }
 
