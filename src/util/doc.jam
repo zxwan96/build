@@ -281,8 +281,6 @@ local rule print-help-top ( )
     print.list-item "--help-internal Boost.Build implementation details." ;
     print.list-item "--help-doc-options Implementation details doc formatting." ;
     print.list-end ;
-    
-    print.section-end ;
 }
 
 
@@ -366,7 +364,6 @@ local rule print-help-usage ( )
     print.list-item 13;
         Show changes in target status (fate). ;
     print.list-end ;
-    print.section-end ;
 }
 
 # Generates description of options controlling the help system. This
@@ -400,7 +397,6 @@ local rule print-help-options (
                 Default is $(def). ;
         }
         print.list-end ;
-        print.section-end ;
     }
 }
 
@@ -410,7 +406,7 @@ local rule print-help-options (
 #
 local rule print-help-module-section (
     module  # The module name.
-    section  # classes, rules or variables.
+    section  # rules or variables.
     : section-head  # The title of the section.
     section-description *  # The detailed description of the section.
 )
@@ -436,7 +432,6 @@ local rule print-help-module-section (
             }
         }
         print.list-end ;
-        print.section-end ;
     }
 }
 
@@ -471,7 +466,6 @@ local rule print-help-all (
             print-help-module $(module-name) ;
         }
     }
-    print.section-end ;
 }
 
 
@@ -483,19 +477,19 @@ local rule print-help-module (
 )
 {
     # Print the docs.
-    print.section "Module '$(module-name)'" $($(module-name).docs) : group ;
+    print.section "Module '$(module-name)'" $($(module-name).docs) ;
 
     # Print out the documented classes.
     print-help-module-section $(module-name) classes : "Module '$(module-name)' classes"
-        "Use --help $(module-name).<class-name> to get more information." ;
+        Use --help $(module-name).<class-name> to get more information. ;
 
     # Print out the documented rules.
     print-help-module-section $(module-name) rules : "Module '$(module-name)' rules"
-        "Use --help $(module-name).<rule-name> to get more information." ;
+        Use --help $(module-name).<rule-name> to get more information. ;
 
     # Print out the documented variables.
     print-help-module-section $(module-name) variables : "Module '$(module-name)' variables"
-        "Use --help $(module-name).<variable-name> to get more information." ;
+        Use --help $(module-name).<variable-name> to get more information. ;
 
     # Print out all the same information but indetailed form.
     if $(.option.detailed)
@@ -504,8 +498,6 @@ local rule print-help-module (
         print-help-rules $(module-name) ;
         print-help-variables $(module-name) ;
     }
-    
-    print.section-end group ;
 }
 
 
@@ -537,7 +529,6 @@ local rule print-help-rules (
                     }
                     print.list-end ;
                 }
-                print.section-end ;
             }
         }
     }
@@ -563,8 +554,7 @@ local rule print-help-classes (
                 signature ?= "" ;
                 print.section "Class '$(module-name).$(class-name) ( $(signature) )'"
                     $($(module-name).$(class-name).docs)
-                   "Inherits from '"$($(module-name).$(class-name).super-name)"'."
-                   : group ;
+                   "Inherits from '"$($(module-name).$(class-name).super-name)"'." ;
                 if $($(module-name).$(class-name).args)
                 {
                     print.list-start ;
@@ -574,7 +564,6 @@ local rule print-help-classes (
                     }
                     print.list-end ;
                 }
-                print.section-end group ;
             }
 
             # Print out the documented rules of the class.
@@ -619,7 +608,6 @@ local rule print-help-variables (
                 }
                 print.list-end ;
             }
-            print.section-end ;
         }
     }
 }
@@ -639,8 +627,6 @@ local rule print-help-project (
             Project has jamfile at $(jamfile) ;
 
         print.lines $(jamfile<$(jamfile)>.docs) "" ;
-        
-        print.section-end ;
     }
 }
 
@@ -660,8 +646,6 @@ local rule print-help-config (
             Configuration file at $(config-file) ;
 
         print.lines $(jamfile<$(config-file)>.docs) "" ;
-        
-        print.section-end ;
     }
 }
 
@@ -1018,12 +1002,6 @@ local rule do-scan (
         print.output $(help-output-file).html html ;
         ALWAYS $(help-output-file).html ;
         DEPENDS all : $(help-output-file).html ;
-    }
-    if $(help-output) = qbk
-    {
-        print.output $(help-output-file).qbk qbk ;
-        ALWAYS $(help-output-file).qbk ;
-        DEPENDS all : $(help-output-file).qbk ;
     }
     for local module-file in $(modules[1--2])
     {
