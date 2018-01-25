@@ -191,6 +191,34 @@ int yyline()
     return EOF;
 }
 
+/* This allows us to get an extra character of lookahead.
+ * There are a few places where we need to look ahead two
+ * characters and yyprev only guarantees a single character
+ * of putback.
+ */
+int yypeek()
+{
+    if ( *incp->string )
+    {
+        return *incp->string;
+    }
+    else if ( incp->strings )
+    {
+        if ( *incp->strings )
+            return **incp->strings;
+    }
+    else if ( incp->file )
+    {
+        /* Don't bother opening the file.  yypeek is
+         * only used in special cases and never at the
+         * beginning of a file.
+         */
+        int ch = fgetc( incp->file );
+        if ( ch != EOF )
+            ungetc( ch, incp->file );
+        return ch;
+    }
+}
 
 /*
  * yylex() - set yylval to current token; return its type.
@@ -417,17 +445,12 @@ int yylex()
                     }
                     else if ( c == '+' || c == '?' )
                     {
-                        if ( yychar() == '=' )
+                        if ( yypeek() == '=' )
                         {
                             *b++ = c;
-                            *b++ = '=';
+                            *b++ = yychar();
                             c = yychar();
                             yyendkeyword();
-                        }
-                        else
-                        {
-                            /* FIXME: double putback??? */
-                            yyprev();
                         }
                     }
                 }
@@ -448,26 +471,19 @@ int yylex()
                     }
                     else if ( c == '+' || c == '?' )
                     {
-                        if ( yychar() == '=' )
+                        if ( yypeek() == '=' )
                         {
                             if ( hastoken )
                             {
-                                /* FIXME: double putback. */
-                                yyprev();
                                 yystartkeyword();
                             }
                             else
                             {
                                 *b++ = c;
-                                *b++ = '=';
+                                *b++ = yychar();
                                 c = yychar();
                                 yyendkeyword();
                             }
-                        }
-                        else
-                        {
-                            /* FIXME: double putback??? */
-                            yyprev();
                         }
                     }
                 }
@@ -506,12 +522,10 @@ int yylex()
                         int is_conditional = 0;
                         if ( next == '\\' )
                         {
-                            if( yychar() == '\\' )
+                            if( yypeek() == '\\' )
                             {
                                 is_win_path = 1;
                             }
-                            /* FIXME: we're only guaranteed one character of putback. */
-                            yyprev();
                         }
                         else if ( next == '/' )
                         {
